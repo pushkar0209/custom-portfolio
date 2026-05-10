@@ -1,0 +1,259 @@
+[
+  {
+    "id": "TC001",
+    "title": "Submit the contact form successfully",
+    "description": "This verifies that a visitor can fill out the contact form on the portfolio page and receive a successful confirmation after submission.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Alex Morgan"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with alex.morgan@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with a brief inquiry about freelance work"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Inspect the animated hero and CyberDeck on first load",
+    "description": "This verifies that a first-time visitor can land on the portfolio homepage and see the interactive hero experience rendered correctly.",
+    "category": "3D Interaction",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero content is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the CyberDeck 3D experience is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Rotate the 3D model by dragging",
+    "description": "This verifies that a visitor can manipulate the CyberDeck with a drag gesture and the interactive model remains visible.",
+    "category": "3D Interaction",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Drag on the 3D model to rotate it"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the CyberDeck remains displayed after interaction"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Reveal node labels on hover",
+    "description": "This verifies that hovering CyberDeck nodes exposes their labels for exploration and discovery.",
+    "category": "3D Interaction",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a CyberDeck node"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a node label is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Show required-field validation when the message is missing",
+    "description": "This verifies that the contact form blocks submission and shows validation feedback when a required message is omitted.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Alex Morgan"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with alex.morgan@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Leave the message field empty"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains on the portfolio page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Use the portfolio on a smaller viewport",
+    "description": "This verifies that the single-page portfolio remains usable on a mobile-sized screen with the hero, 3D area, and contact form accessible.",
+    "category": "Responsive Portfolio",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a mobile size"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the portfolio content is displayed in the mobile layout"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section is accessible on the page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Use the portfolio on a desktop viewport",
+    "description": "This verifies that the single-page portfolio renders correctly on a desktop-sized screen with the main hero and contact section visible within the layout.",
+    "category": "Responsive Portfolio",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a desktop size"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the portfolio content is displayed in the desktop layout"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section is accessible on the page"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC008",
+    "title": "Show email validation for an invalid address",
+    "description": "This verifies that the contact form prevents submission and displays inline feedback when the email format is invalid.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Alex Morgan"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with not-an-email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with a brief inquiry about freelance work"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an email validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the form is still displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC009",
+    "title": "Keep 3D interaction usable while moving through the page",
+    "description": "This verifies that a visitor can move from the hero to the contact section and still access both the interactive showcase and the form on the same page.",
+    "category": "Responsive Portfolio",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll from the hero section toward the contact section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 3D showcase remains part of the page experience"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form is visible"
+      }
+    ],
+    "priority": "Medium"
+  }
+]

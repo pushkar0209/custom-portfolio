@@ -1,0 +1,19 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "loginUser": "maduri15251@gmail.com",
+  "loginPassword": "pushkar@12345",
+  "executionArgs": {
+    "projectName": "stitch_next_gen_3d_portfolio_experience",
+    "projectPath": "c:\\Users\\Administrator\\Downloads\\stitch_next_gen_3d_portfolio_experience\\stitch_next_gen_3d_portfolio_experience",
+    "testIds": [],
+    "additionalInstruction": "Verify the interactive CyberDeck, CustomCursor, and HUDOverlay. Ensure the AboutSection academic pathways display correctly with the new duration and institution fields.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-vhQGE9aKLi9VYTxahur19hh2gTT0nmm-PWWUYTHEtbf8Hh4PYDyNNcWR-eeJa-Pw6cXj-vu6SrRima9R-87BMyoQDj6KkcLt7b431z3CclFS06dHJwFA5ZpJFqFCpRpYJ3E"
+    }
+  },
+  "serverPort": 55966
+}

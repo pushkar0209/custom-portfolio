@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PSM_CORE_V1.0 - Experience &amp; Integration Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface-container": "#201f21",
+                        "secondary-fixed": "#c3f400",
+                        "tertiary": "#fff3f3",
+                        "inverse-primary": "#006970",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed": "#40000f",
+                        "on-primary": "#00363a",
+                        "on-surface": "#e5e1e4",
+                        "surface-tint": "#00dbe9",
+                        "on-error": "#690005",
+                        "surface": "#131315",
+                        "tertiary-container": "#ffcdd0",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-tertiary-fixed-variant": "#91002d",
+                        "primary-container": "#00f0ff",
+                        "inverse-on-surface": "#313032",
+                        "outline-variant": "#3b494b",
+                        "on-tertiary": "#67001d",
+                        "background": "#131315",
+                        "secondary": "#ffffff",
+                        "inverse-surface": "#e5e1e4",
+                        "on-secondary": "#283500",
+                        "primary": "#dbfcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#556d00",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-highest": "#353437",
+                        "tertiary-fixed-dim": "#ffb2b8",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-bright": "#39393b",
+                        "secondary-fixed-dim": "#abd600",
+                        "outline": "#849495",
+                        "on-tertiary-container": "#be003d",
+                        "surface-variant": "#353437",
+                        "on-secondary-fixed-variant": "#3c4d00",
+                        "on-secondary-fixed": "#161e00",
+                        "secondary-container": "#c3f400",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-container": "#006970",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        "grid-columns": "12",
+                        "bento-gap": "16px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-caps": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "code-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-caps": ["11px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-lg min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-fixed-dim selection:text-on-primary">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-surface-container-low/60 backdrop-blur-3xl fixed left-0 top-0 h-full w-[280px] z-40 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex-col py-8 px-4">
+<div class="mb-12 px-4">
+<h1 class="font-headline-md text-primary-fixed tracking-tight">P.S. MADHURI</h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">STATUS: ENCRYPTED</p>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider">Bio_Scan</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim group transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider group-hover:translate-x-1 transition-transform duration-200">Project_Logs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider">Skill_Matrix</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider">Contact_Init</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto px-4">
+<button class="w-full py-3 px-4 border border-primary-fixed-dim text-primary-fixed-dim font-code-sm text-code-sm uppercase tracking-wider rounded hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300">
+                INITIATE_CONTACT
+            </button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<nav class="md:hidden bg-surface-container/40 backdrop-blur-[40px] fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-margin-mobile py-4 transition-all duration-300 ease-out active:scale-95">
+<h1 class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">PSM_CORE_V1.0</h1>
+<div class="flex items-center space-x-4 text-primary-fixed-dim">
+<span class="material-symbols-outlined cursor-pointer hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] rounded p-1">terminal</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:pl-[280px] pt-20 md:pt-0 min-h-screen flex flex-col">
+<div class="flex-1 p-margin-mobile md:p-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Header -->
+<header class="mb-12 border-b border-secondary-fixed/20 pb-6">
+<h2 class="font-headline-lg text-headline-lg text-secondary-fixed mb-2 uppercase tracking-tight">System Integration Log</h2>
+<p class="font-code-sm text-code-sm text-on-surface-variant flex items-center">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim shadow-[0_0_10px_rgba(0,219,233,0.8)] mr-3"></span>
+                    ACTIVE DEPLOYMENT HISTORY
+                </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Experience Stream (Left/Main Column) -->
+<div class="col-span-1 md:col-span-8 space-y-bento-gap">
+<!-- Role 1: AI/ML & Full Stack -->
+<article class="bg-surface-container-low/80 backdrop-blur-[40px] border-t border-l border-primary-fixed-dim/20 border-b border-r border-black/40 rounded-DEFAULT p-6 relative overflow-hidden group">
+<!-- Neon Accent Line -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed-dim shadow-[0_0_15px_rgba(0,219,233,0.5)]"></div>
+<div class="flex flex-col md:flex-row md:items-start justify-between mb-6 pl-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary-fixed mb-1">AI/ML &amp; Full Stack Developer</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Confidential Tech Solutions // Remote</p>
+</div>
+<div class="mt-2 md:mt-0 px-3 py-1 bg-surface-dim border border-primary-fixed-dim/30 rounded font-code-sm text-code-sm text-primary-fixed-dim">
+                                2024 - PRESENT
+                            </div>
+</div>
+<ul class="space-y-4 font-body-md text-body-md text-on-surface pl-4 relative">
+<!-- Thread Line -->
+<div class="absolute left-[7px] top-2 bottom-2 w-[1px] bg-secondary-fixed/20"></div>
+<li class="relative pl-6">
+<span class="absolute left-0 top-[6px] w-[3px] h-[3px] rounded-full bg-secondary-fixed shadow-[0_0_5px_rgba(195,244,0,0.8)]"></span>
+                                Architected and deployed scalable machine learning models using TensorFlow and PyTorch, increasing prediction accuracy by 18% in production environments.
+                            </li>
+<li class="relative pl-6">
+<span class="absolute left-0 top-[6px] w-[3px] h-[3px] rounded-full bg-secondary-fixed shadow-[0_0_5px_rgba(195,244,0,0.8)]"></span>
+                                Developed high-performance RESTful APIs using FastAPI and Node.js to serve ML model inferences to front-end clients with sub-50ms latency.
+                            </li>
+<li class="relative pl-6">
+<span class="absolute left-0 top-[6px] w-[3px] h-[3px] rounded-full bg-secondary-fixed shadow-[0_0_5px_rgba(195,244,0,0.8)]"></span>
+                                Engineered responsive UI components in React and Tailwind CSS, ensuring seamless data visualization of complex model outputs.
+                            </li>
+</ul>
+<div class="mt-6 pl-4 flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface border border-outline-variant text-on-surface-variant font-code-sm text-label-caps rounded">Python</span>
+<span class="px-2 py-1 bg-surface border border-outline-variant text-on-surface-variant font-code-sm text-label-caps rounded">TensorFlow</span>
+<span class="px-2 py-1 bg-surface border border-outline-variant text-on-surface-variant font-code-sm text-label-caps rounded">React</span>
+<span class="px-2 py-1 bg-surface border border-outline-variant text-on-surface-variant font-code-sm text-label-caps rounded">FastAPI</span>
+</div>
+</article>
+<!-- Role 2: Full Stack Web Dev -->
+<article class="bg-surface-container-low/40 backdrop-blur-[20px] border-t border-l border-white/5 border-b border-r border-black/40 rounded-DEFAULT p-6 relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="flex flex-col md:flex-row md:items-start justify-between mb-6 pl-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Full Stack Web Developer</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Digital Frontiers Agency // Hybrid</p>
+</div>
+<div class="mt-2 md:mt-0 px-3 py-1 bg-surface-dim border border-outline-variant/30 rounded font-code-sm text-code-sm text-on-surface-variant">
+                                2023 - 2024
+                            </div>
+</div>
+<ul class="space-y-4 font-body-md text-body-md text-on-surface/80 pl-4 relative">
+<div class="absolute left-[7px] top-2 bottom-2 w-[1px] bg-white/10"></div>
+<li class="relative pl-6">
+<span class="absolute left-0 top-[6px] w-[3px] h-[3px] rounded-full bg-outline-variant"></span>
+                                Led the full-cycle development of 3 enterprise-level web applications using the MERN stack, managing database schemas and client-side state.
+                            </li>
+<li class="relative pl-6">
+<span class="absolute left-0 top-[6px] w-[3px] h-[3px] rounded-full bg-outline-variant"></span>
+                                Optimized MongoDB queries and indexing strategies, reducing average page load times by 40% for heavy data-grid views.
+                            </li>
+</ul>
+</article>
+</div>
+<!-- Sidecar (Right Column) - Testimonials -->
+<div class="col-span-1 md:col-span-4 space-y-bento-gap">
+<div class="bg-surface-container-highest border border-white/5 rounded-DEFAULT p-4 mb-4">
+<h4 class="font-label-caps text-label-caps text-secondary-fixed tracking-widest uppercase mb-4 flex items-center border-b border-secondary-fixed/20 pb-2">
+<span class="material-symbols-outlined text-[16px] mr-2">forum</span>
+                            Peer Reviews
+                        </h4>
+<div class="space-y-4">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-low p-4 rounded border border-white/5 hover:border-secondary-fixed/30 transition-colors">
+<p class="font-body-md text-body-md text-on-surface/90 italic mb-3">"An exceptional talent in bridging the gap between complex ML theory and practical, robust full-stack implementation."</p>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-dim border border-secondary-fixed/50 flex items-center justify-center mr-3">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">person</span>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-primary-fixed">Prof. Anil Kumar</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Dept. of Computer Science</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-low p-4 rounded border border-white/5 hover:border-secondary-fixed/30 transition-colors">
+<p class="font-body-md text-body-md text-on-surface/90 italic mb-3">"Consistently delivered high-quality, scalable code. A methodical problem solver with a deep understanding of system architecture."</p>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-dim border border-secondary-fixed/50 flex items-center justify-center mr-3">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">person</span>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-primary-fixed">Dr. Ramesh Babu</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Lead AI Researcher</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto bg-surface-container-lowest w-full py-6 border-t border-secondary-fixed/10 flex flex-row justify-between items-center px-margin-mobile md:px-margin-desktop font-code-sm text-code-sm uppercase text-on-surface-variant">
+<div class="flex space-x-6">
+<span class="hover:text-secondary-fixed transition-colors cursor-crosshair">System_Status: OK</span>
+<span class="hover:text-secondary-fixed transition-colors cursor-crosshair">Latency: 24ms</span>
+<span class="hover:text-secondary-fixed transition-colors cursor-crosshair">Node: 0x7DF4FF</span>
+</div>
+<div>
+                © 2024 CORE_STUB // PSM_OS_V1.0
+            </div>
+</footer>
+</main>
+</body></html>

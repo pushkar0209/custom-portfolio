@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PSM_CORE // NEURAL_PLAYGROUND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#c3f400",
+                      "surface-variant": "#353437",
+                      "error-container": "#93000a",
+                      "tertiary": "#fff3f3",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary-container": "#c3f400",
+                      "outline-variant": "#3b494b",
+                      "surface-bright": "#39393b",
+                      "inverse-primary": "#006970",
+                      "on-primary": "#00363a",
+                      "on-tertiary-fixed-variant": "#91002d",
+                      "on-background": "#e5e1e4",
+                      "surface-dim": "#131315",
+                      "inverse-surface": "#e5e1e4",
+                      "tertiary-container": "#ffcdd0",
+                      "outline": "#849495",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary-fixed": "#161e00",
+                      "on-primary-container": "#006970",
+                      "primary-container": "#00f0ff",
+                      "on-tertiary": "#67001d",
+                      "surface-tint": "#00dbe9",
+                      "secondary": "#ffffff",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#ffb2b8",
+                      "surface-container-high": "#2a2a2c",
+                      "primary-fixed-dim": "#00dbe9",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#556d00",
+                      "surface-container": "#201f21",
+                      "on-tertiary-fixed": "#40000f",
+                      "on-secondary-fixed-variant": "#3c4d00",
+                      "secondary-fixed-dim": "#abd600",
+                      "on-tertiary-container": "#be003d",
+                      "on-secondary": "#283500",
+                      "surface-container-highest": "#353437",
+                      "inverse-on-surface": "#313032",
+                      "background": "#131315",
+                      "tertiary-fixed": "#ffdadb",
+                      "surface-container-low": "#1c1b1d",
+                      "surface": "#131315",
+                      "primary-fixed": "#7df4ff",
+                      "on-primary-fixed": "#002022",
+                      "on-surface": "#e5e1e4",
+                      "primary": "#dbfcff",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "grid-columns": "12",
+                      "bento-gap": "16px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Space Grotesk"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-lg": ["JetBrains Mono"],
+                      "headline-md": ["Space Grotesk"],
+                      "body-md": ["JetBrains Mono"],
+                      "headline-lg": ["Space Grotesk"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            border-top: 1px solid rgba(0, 219, 233, 0.1);
+            border-left: 1px solid rgba(0, 219, 233, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 219, 233, 0.05) 50%);
+            background-size: 100% 4px;
+        }
+        .emissive-glow {
+            box-shadow: 0 0 20px -5px rgba(0, 219, 233, 0.5);
+        }
+        .latent-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 219, 233, 0.15) 0%, transparent 70%);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0e0e10; }
+        ::-webkit-scrollbar-thumb { background: #00dbe9; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<nav class="flex justify-between items-center px-margin-desktop py-4 mx-auto w-full max-w-[1440px]">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">
+                PSM_CORE_V1.0
+            </div>
+<div class="hidden md:flex gap-8 items-center font-body-md text-body-md uppercase tracking-widest">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1" href="#">Models</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1" href="#">Architecture</a>
+<a class="text-primary-fixed border-b-2 border-primary-fixed-dim pb-1" href="#">Neural_Net</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1" href="#">Terminal</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-highest/30 border border-primary-fixed-dim/20 px-4 py-1 text-code-sm font-code-sm focus:outline-none focus:border-primary-fixed-dim transition-all w-48" placeholder="QUERY_CORE..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer hover:scale-110 transition-transform">settings_input_component</span>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer hover:scale-110 transition-transform">terminal</span>
+</div>
+</nav>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[280px] z-40 bg-surface-container-low/60 backdrop-blur-3xl border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] hidden lg:flex flex-col py-8 px-4 mt-16">
+<div class="mb-12 flex items-center gap-4 px-4">
+<div class="w-10 h-10 bg-primary-fixed-dim rounded-none flex items-center justify-center emissive-glow">
+<span class="material-symbols-outlined text-on-primary">psychology</span>
+</div>
+<div>
+<div class="font-headline-md text-primary-fixed text-[18px]">P.S. MADHURI</div>
+<div class="font-code-sm text-code-sm opacity-50 tracking-tighter">STATUS: ENCRYPTED</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="group flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-code-sm text-code-sm group-hover:translate-x-1 transition-transform">Bio_Scan</span>
+</a>
+<a class="group flex items-center gap-4 px-4 py-3 bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">database</span>
+<span class="font-code-sm text-code-sm group-hover:translate-x-1 transition-transform">Project_Logs</span>
+</a>
+<a class="group flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-code-sm text-code-sm group-hover:translate-x-1 transition-transform">Skill_Matrix</span>
+</a>
+<a class="group flex items-center gap-4 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">send</span>
+<span class="font-code-sm text-code-sm group-hover:translate-x-1 transition-transform">Contact_Init</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full py-4 bg-primary-fixed-dim/10 border border-primary-fixed-dim text-primary-fixed-dim font-code-sm uppercase tracking-widest hover:bg-primary-fixed-dim hover:text-on-primary-container transition-all active:scale-95">
+                INITIATE_CONTACT
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-[280px] pt-24 pb-12 px-margin-mobile md:px-margin-desktop min-h-screen scan-line">
+<div class="max-w-[1440px] mx-auto">
+<!-- Page Header -->
+<div class="mb-12 border-l-4 border-secondary-fixed pl-6">
+<h1 class="font-display-lg text-display-lg text-primary uppercase mb-2">Neural Playground</h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed shadow-[0_0_8px_#c3f400]"></span>
+                    Kernel Session: Active // Latent Vector Exploration Mode
+                </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Latent Space Explorer (Z-1 Panel) -->
+<div class="md:col-span-8 bg-surface-container-low/60 backdrop-blur-[40px] glass-panel p-6 flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-center mb-6 border-b border-primary-fixed-dim/10 pb-4">
+<h2 class="font-headline-md text-headline-md text-primary-fixed flex items-center gap-2">
+<span class="material-symbols-outlined">blur_on</span> LATENT_SPACE_EXPLORER
+                        </h2>
+<div class="flex gap-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-label-caps font-label-caps px-2 py-0.5">X_AXIS: ATTENTION</span>
+<span class="bg-primary-fixed-dim text-on-primary-fixed text-label-caps font-label-caps px-2 py-0.5">Y_AXIS: ENTROPY</span>
+</div>
+</div>
+<div class="h-[400px] latent-gradient relative border border-white/5 flex items-center justify-center">
+<!-- Simulated Node Graph / Visualization -->
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#00dbe9 1px, transparent 1px); background-size: 24px 24px;"></div>
+<img class="w-full h-full object-cover mix-blend-screen opacity-60" data-alt="A complex 3D network of glowing cyan nodes and intricate light filaments suspended in a dark, atmospheric void. The visual represents a neural architecture with pulsing light trails connecting distant nodes. The composition is non-linear and futuristic, using a neon-noir aesthetic with intense blue and white glows against deep obsidian backgrounds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC87LMf_MBHXI2ZrLjRlzJZ2sVy5SuJ00ZSJfOQovNvis0qpUph0HUrshHznWlGzoOht9KzpwpvuOw05885LCbZPTMYvlbXpjFvuwj11zm0yf5zEWlf1vHQNGGjqNpK7tCwUN1WkSYD8MsEICADapiM2I3QgD1c4Ske2teHxvS9UmeU3LhJXJNbcg1sIsxWJl5wXW38Dg38DSf3dgq6cz6NJAN7gTuDYLtNrusKDbXaGGyBwzfE6RhhIYI9l3Qki_GwRyHHBzhOxF3b"/>
+<div class="absolute top-1/2 left-1/3 w-4 h-4 bg-primary-fixed shadow-[0_0_20px_#00dbe9] border border-white z-10"></div>
+<div class="absolute top-1/4 right-1/4 w-2 h-2 bg-secondary-fixed shadow-[0_0_15px_#c3f400] border border-white z-10"></div>
+<div class="absolute bottom-1/3 right-1/2 w-3 h-3 bg-error shadow-[0_0_20px_#ffb4ab] border border-white z-10"></div>
+</div>
+<div class="mt-4 flex gap-4 overflow-x-auto pb-2">
+<div class="flex-shrink-0 bg-surface-container-high/40 px-3 py-2 border-l border-primary-fixed-dim">
+<div class="text-label-caps font-label-caps text-on-surface-variant">VECTOR_ID</div>
+<div class="font-code-sm text-primary-fixed-dim">0x88A2_F0</div>
+</div>
+<div class="flex-shrink-0 bg-surface-container-high/40 px-3 py-2 border-l border-secondary-fixed">
+<div class="text-label-caps font-label-caps text-on-surface-variant">MAGNITUDE</div>
+<div class="font-code-sm text-secondary-fixed">14.922 KΩ</div>
+</div>
+<div class="flex-shrink-0 bg-surface-container-high/40 px-3 py-2 border-l border-error">
+<div class="text-label-caps font-label-caps text-on-surface-variant">LOSS_FACTOR</div>
+<div class="font-code-sm text-error">0.000412</div>
+</div>
+</div>
+</div>
+<!-- Network Weights (Z-1 Panel) -->
+<div class="md:col-span-4 bg-surface-container-low/60 backdrop-blur-[40px] glass-panel p-6 flex flex-col">
+<h2 class="font-headline-md text-headline-md text-primary-fixed mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">tune</span> HYPER_PARAMS
+                    </h2>
+<div class="space-y-8">
+<div class="space-y-3">
+<div class="flex justify-between font-code-sm text-on-surface-variant">
+<span>LEARNING_RATE</span>
+<span class="text-primary-fixed-dim">0.0001</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-none appearance-none cursor-pointer accent-primary-fixed-dim" max="100" min="0" type="range" value="45"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between font-code-sm text-on-surface-variant">
+<span>NEURAL_DENSITY</span>
+<span class="text-secondary-fixed">HIGH</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-none appearance-none cursor-pointer accent-secondary-fixed" max="100" min="0" type="range" value="82"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between font-code-sm text-on-surface-variant">
+<span>DROP_OUT</span>
+<span class="text-primary-fixed-dim">0.25</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-none appearance-none cursor-pointer accent-primary-fixed-dim" max="100" min="0" type="range" value="25"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between font-code-sm text-on-surface-variant">
+<span>ENTROPY_THRESHOLD</span>
+<span class="text-primary-fixed-dim">0.78</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-none appearance-none cursor-pointer accent-primary-fixed-dim" max="100" min="0" type="range" value="78"/>
+</div>
+</div>
+<div class="mt-auto pt-8">
+<button class="w-full py-3 bg-secondary-fixed text-on-secondary-fixed font-label-caps uppercase emissive-glow hover:opacity-90 transition-opacity">
+                            RECALIBRATE_LAYER
+                        </button>
+</div>
+</div>
+<!-- Neural Firings (Z-1 Panel) -->
+<div class="md:col-span-4 bg-surface-container-low/60 backdrop-blur-[40px] glass-panel p-6 overflow-hidden">
+<h2 class="font-headline-md text-headline-md text-primary-fixed mb-4 border-b border-white/5 pb-2">DATA_STREAM</h2>
+<div class="font-code-sm text-code-sm space-y-2 h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex gap-3 text-secondary-fixed opacity-80">
+<span class="opacity-40">12:44:01</span>
+<span>[INFO] Neuron_441 fired: 0.982</span>
+</div>
+<div class="flex gap-3 text-primary-fixed-dim">
+<span class="opacity-40">12:44:02</span>
+<span>[CORE] Synapse weight adjusted: +0.02</span>
+</div>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="opacity-40">12:44:02</span>
+<span>[WARN] Latent drift detected in cell_8</span>
+</div>
+<div class="flex gap-3 text-secondary-fixed opacity-80">
+<span class="opacity-40">12:44:03</span>
+<span>[INFO] Batch process 0xF2 completed</span>
+</div>
+<div class="flex gap-3 text-primary-fixed-dim">
+<span class="opacity-40">12:44:04</span>
+<span>[CORE] Re-indexing attention heads...</span>
+</div>
+<div class="flex gap-3 text-error">
+<span class="opacity-40">12:44:05</span>
+<span>[ERR] Tensor overflow in layer_7</span>
+</div>
+<div class="flex gap-3 text-secondary-fixed opacity-80">
+<span class="opacity-40">12:44:06</span>
+<span>[INFO] Auto-recovering node architecture</span>
+</div>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="opacity-40">12:44:07</span>
+<span>[LOG] Session heartbeat: OK</span>
+</div>
+</div>
+</div>
+<!-- Network Visualization (Z-1 Panel) -->
+<div class="md:col-span-8 bg-surface-container-low/60 backdrop-blur-[40px] glass-panel p-6">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+<div class="sm:col-span-2 relative overflow-hidden h-[300px] border border-white/10 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A macroscopic view of an integrated circuit or neural processor with vibrant cyan and lime green light channels flowing like liquid through digital pathways. The perspective is from a low angle, emphasizing a vast technological landscape. Soft lens flare and high-contrast lighting create a moody, cybernetic atmosphere consistent with neon-noir aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeT9xCeFTpDpb1tODvxg41-d847V20LPG4ySMKRlfDuQa0iBpT8vy-y5-8xLbe-gbwwPhjGTW10S9-ZCB2yG96v0cWa3mxba_eY9YrGzTgCE_kKGGLfd1cUaYzAOB3Le_kj2GDlHEraEFkX1AGPQU0zsiLhZDQAHfYj_mWaSmtpet5ZnnbN539fFVBlC16p5k_NmDKOqHCVqqfxgVVhcJbezSk1XlA5kGGVYVji5Rg74Q0LOwSqE_nPUN0KE-U5lVwMXd2dX-KeHJx"/>
+<div class="absolute top-4 left-4 bg-primary-fixed-dim/80 text-on-primary-fixed px-3 py-1 font-label-caps">LIVE_TOPOLOGY</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex-1 bg-surface-container-high/50 p-4 border-r-2 border-secondary-fixed">
+<div class="text-label-caps font-label-caps text-on-surface-variant mb-1">ACCURACY</div>
+<div class="text-[32px] font-display-lg text-secondary-fixed leading-none">99.4%</div>
+</div>
+<div class="flex-1 bg-surface-container-high/50 p-4 border-r-2 border-primary-fixed-dim">
+<div class="text-label-caps font-label-caps text-on-surface-variant mb-1">LATENCY</div>
+<div class="text-[32px] font-display-lg text-primary-fixed-dim leading-none">2.4ms</div>
+</div>
+<div class="flex-1 bg-surface-container-high/50 p-4 border-r-2 border-error">
+<div class="text-label-caps font-label-caps text-on-surface-variant mb-1">DRIFT</div>
+<div class="text-[32px] font-display-lg text-error leading-none">0.02</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-6 border-t border-secondary-fixed/20 bg-surface-container-lowest cursor-crosshair">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop w-full max-w-[1440px] mx-auto gap-4">
+<div class="font-code-sm text-code-sm uppercase text-on-surface-variant">
+                © 2024 CORE_STUB // PSM_OS_V1.0
+            </div>
+<div class="flex flex-wrap justify-center gap-8 font-code-sm text-code-sm uppercase text-on-surface-variant">
+<span class="flex items-center gap-2 hover:text-secondary-fixed transition-colors">
+<span class="w-1.5 h-1.5 bg-secondary-fixed"></span> System_Status: OK
+                </span>
+<span class="flex items-center gap-2 hover:text-secondary-fixed transition-colors">
+<span class="w-1.5 h-1.5 bg-primary-fixed-dim"></span> Latency: 24ms
+                </span>
+<span class="flex items-center gap-2 hover:text-secondary-fixed transition-colors">
+<span class="w-1.5 h-1.5 bg-white"></span> Node: 0x7DF4FF
+                </span>
+</div>
+</div>
+</footer>
+</body></html>

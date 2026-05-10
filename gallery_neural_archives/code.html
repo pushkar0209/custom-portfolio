@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PSM_CORE_V1.0 - Project Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131315",
+                      "surface-container-low": "#1c1b1d",
+                      "surface-container": "#201f21",
+                      "secondary-fixed": "#c3f400",
+                      "tertiary": "#fff3f3",
+                      "inverse-primary": "#006970",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-tertiary-fixed": "#40000f",
+                      "on-primary": "#00363a",
+                      "on-surface": "#e5e1e4",
+                      "surface-tint": "#00dbe9",
+                      "on-error": "#690005",
+                      "surface": "#131315",
+                      "tertiary-container": "#ffcdd0",
+                      "on-primary-fixed": "#002022",
+                      "tertiary-fixed": "#ffdadb",
+                      "on-tertiary-fixed-variant": "#91002d",
+                      "primary-container": "#00f0ff",
+                      "inverse-on-surface": "#313032",
+                      "outline-variant": "#3b494b",
+                      "on-tertiary": "#67001d",
+                      "background": "#131315",
+                      "secondary": "#ffffff",
+                      "inverse-surface": "#e5e1e4",
+                      "on-secondary": "#283500",
+                      "primary": "#dbfcff",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary-container": "#556d00",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#7df4ff",
+                      "surface-container-lowest": "#0e0e10",
+                      "surface-container-highest": "#353437",
+                      "tertiary-fixed-dim": "#ffb2b8",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-bright": "#39393b",
+                      "secondary-fixed-dim": "#abd600",
+                      "outline": "#849495",
+                      "on-tertiary-container": "#be003d",
+                      "surface-variant": "#353437",
+                      "on-secondary-fixed-variant": "#3c4d00",
+                      "on-secondary-fixed": "#161e00",
+                      "secondary-container": "#c3f400",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e5e1e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "48px",
+                      "margin-mobile": "16px",
+                      "grid-columns": "12",
+                      "bento-gap": "16px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "code-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .bento-card {
+            background-color: theme('colors.surface-container-low/60');
+            backdrop-filter: blur(40px);
+            border-top: 1px solid theme('colors.primary-fixed-dim/10');
+            border-left: 1px solid theme('colors.primary-fixed-dim/10');
+            border-bottom: 1px solid theme('colors.surface-container-highest');
+            border-right: 1px solid theme('colors.surface-container-highest');
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        .bento-card-active {
+            box-shadow: 0 0 20px -5px theme('colors.primary-fixed-dim/30'), inset 0 0 10px -5px theme('colors.primary-fixed-dim/20');
+        }
+        .btn-ghost {
+            border: 1px solid theme('colors.primary-fixed-dim');
+            color: theme('colors.primary-fixed-dim');
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover {
+            background-color: theme('colors.primary-fixed-dim/10');
+            box-shadow: 0 0 15px theme('colors.primary-fixed-dim/30');
+        }
+        .chip-active {
+            background-color: theme('colors.primary-fixed-dim');
+            color: theme('colors.on-primary');
+        }
+        .chip-idle {
+            background-color: theme('colors.surface-bright');
+            color: theme('colors.on-surface-variant');
+        }
+        .status-pip {
+            box-shadow: 0 0 10px theme('colors.secondary-fixed');
+        }
+      </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-fixed-dim selection:text-on-primary">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-full py-8 px-4 bg-surface-container-low/60 backdrop-blur-3xl border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] fixed left-0 top-0 w-[280px] z-40 transition-all duration-300 ease-out active:scale-95 group-hover:translate-x-1 transition-transform duration-200">
+<div class="mb-12 px-4">
+<h1 class="font-headline-md text-primary-fixed">P.S. MADHURI</h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant opacity-70 mt-2">STATUS: ENCRYPTED</p>
+</div>
+<ul class="space-y-2 flex-grow font-code-sm text-code-sm">
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fingerprint</span>
+<span>Bio_Scan</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">database</span>
+<span>Project_Logs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">memory</span>
+<span>Skill_Matrix</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto px-4">
+<button class="w-full py-3 btn-ghost font-label-caps rounded flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined">send</span>
+<span>INITIATE_CONTACT</span>
+</button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<nav class="md:hidden fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out active:scale-95 flex justify-between items-center px-margin-mobile py-4 mx-auto max-w-[1440px]">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">
+            PSM_CORE_V1.0
+        </div>
+<div class="flex space-x-4 text-primary-fixed-dim">
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-[280px] pt-24 md:pt-12 px-margin-mobile md:px-margin-desktop pb-24">
+<!-- Header -->
+<header class="mb-12">
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed status-pip"></div>
+<span class="font-code-sm text-code-sm text-secondary-fixed uppercase tracking-wider">System Online // Log Access Granted</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary-fixed">Project_Logs</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-2xl">High-fidelity module deployments and experimental algorithms. Architecture optimized for scale and precision.</p>
+</header>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Module 1: AI Fraud Detection (Large Span) -->
+<article class="bento-card bento-card-active rounded-lg p-6 md:col-span-8 flex flex-col relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed-dim/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="flex justify-between items-start border-b border-secondary-fixed/30 pb-4 mb-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">AI Fraud Detection</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">Classification: Critical // FinTech Sector</p>
+</div>
+<div class="chip-active font-label-caps px-3 py-1 rounded">LIVE</div>
+</div>
+<div class="flex-grow flex flex-col md:flex-row gap-6">
+<div class="md:w-1/2 flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                            Deep neural network architecture designed to analyze transactional anomalies in real-time. Reduces false positives by 42% utilizing sequence-based predictive modeling.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">PyTorch</span>
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">XGBoost</span>
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">AWS SageMaker</span>
+</div>
+</div>
+<div class="md:w-1/2 bg-surface-dim rounded relative overflow-hidden h-48 md:h-auto border border-outline-variant/30 flex items-center justify-center">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;q=80&amp;w=1000')] bg-cover bg-center opacity-30 mix-blend-luminosity" data-alt="A highly detailed, neon-noir digital visualization of a complex neural network structure. Glowing cyan and deep black nodes connect in a chaotic but structured web, representing data points in a fraud detection algorithm. The lighting is low-key, emitting a subtle blue hacker-ethos glow against an obsidian background. It looks like a sophisticated terminal readout from a sci-fi interface."></div>
+<div class="relative z-10 font-code-sm text-primary-fixed-dim opacity-70 text-center">
+                            &gt; SYSTEM_METRICS<br/>
+                            &gt; ACCURACY: 99.8%<br/>
+                            &gt; LATENCY: &lt; 12ms
+                         </div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-white/5 flex justify-end">
+<button class="btn-ghost font-label-caps px-6 py-2 rounded flex items-center space-x-2">
+<span>LAUNCH_MODULE</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Module 2: Smart Attendance (Sidecar) -->
+<article class="bento-card rounded-lg p-6 md:col-span-4 flex flex-col">
+<div class="flex justify-between items-start border-b border-primary-fixed-dim/30 pb-4 mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Smart Attendance</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">Classification: Utility // Vision</p>
+</div>
+<div class="chip-idle font-label-caps px-3 py-1 rounded">IDLE</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Computer vision pipeline for automated identity verification. Employs edge-computing models to ensure privacy-compliant facial recognition in low-bandwidth environments.
+                </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">OpenCV</span>
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">TensorFlow Lite</span>
+</div>
+<div class="mt-auto pt-4 border-t border-white/5">
+<button class="btn-ghost w-full font-label-caps px-4 py-2 rounded flex items-center justify-center space-x-2">
+<span>VIEW_DATASET</span>
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</article>
+<!-- Module 3: ElectroGuide AI (Wide) -->
+<article class="bento-card rounded-lg p-6 md:col-span-12 flex flex-col md:flex-row gap-8 items-center border-l-4 border-l-secondary-fixed">
+<div class="md:w-1/3 w-full h-48 bg-surface-dim rounded relative overflow-hidden border border-outline-variant/30">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;q=80&amp;w=1000')] bg-cover bg-center opacity-40 mix-blend-color-dodge" data-alt="A minimalist, high-contrast close-up of an electronic circuit board illuminated by a stark, electric cyan light. The components are angular and precise, floating in a sea of obsidian black shadow. The mood is technical and surgical, evoking a sense of advanced hardware engineering within a cyber-noir setting."></div>
+</div>
+<div class="md:w-2/3 w-full flex flex-col justify-center">
+<div class="flex items-center space-x-3 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed">bolt</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">ElectroGuide AI</h3>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant mb-4 opacity-70">Hardware Diagnostic Interface // NLP to Schematic</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-3xl">
+                        An LLM-powered assistant designed to guide technicians through complex hardware schematics. Converts natural language queries into specific pinout highlights and diagnostic procedures, reducing troubleshooting time by significant margins.
+                    </p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex flex-wrap gap-2">
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">LangChain</span>
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">Vector DB</span>
+<span class="chip-idle font-code-sm text-code-sm px-2 py-0.5 rounded">React</span>
+</div>
+<button class="btn-ghost font-label-caps px-6 py-2 rounded flex items-center space-x-2">
+<span>INIT_CONSOLE</span>
+<span class="material-symbols-outlined text-sm">terminal</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Project Archive Section -->
+<section class="mt-24">
+<h3 class="font-headline-md text-headline-md text-primary-fixed border-b border-white/10 pb-4 mb-8">Project Archive</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-bento-gap">
+<!-- Archive Item 1 -->
+<div class="bento-card rounded p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-outline">code_blocks</span>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-2">NLP Sentiment Parser</h4>
+<p class="font-body-md text-code-sm text-on-surface-variant mb-4 flex-grow opacity-80">Lightweight script for extracting sentiment trends from raw server logs. Open-sourced utility.</p>
+<div class="font-code-sm text-code-sm text-primary-fixed-dim opacity-60">&gt; python -m sentiment_parse</div>
+</div>
+<!-- Archive Item 2 -->
+<div class="bento-card rounded p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-outline">api</span>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-2">RESTful Geo-Mapper</h4>
+<p class="font-body-md text-code-sm text-on-surface-variant mb-4 flex-grow opacity-80">API endpoint wrapper for rapid plotting of geospatial data coordinates. Cached for high throughput.</p>
+<div class="font-code-sm text-code-sm text-primary-fixed-dim opacity-60">&gt; endpoint: /v1/map/plot</div>
+</div>
+<!-- Archive Item 3 -->
+<div class="bento-card rounded p-5 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-outline">speed</span>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-2">DataStream Optimizer</h4>
+<p class="font-body-md text-code-sm text-on-surface-variant mb-4 flex-grow opacity-80">Pandas memory profiling tool. Detects inefficient dataframe allocations during ETL processes.</p>
+<div class="font-code-sm text-code-sm text-primary-fixed-dim opacity-60">&gt; import ds_opt</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-6 border-t border-secondary-fixed/10 bg-surface-container-lowest flex flex-row justify-between items-center px-margin-mobile md:px-margin-desktop mt-auto cursor-crosshair">
+<div class="font-code-sm text-code-sm uppercase text-secondary-fixed-dim">
+            © 2024 CORE_STUB // PSM_OS_V1.0
+        </div>
+<div class="flex space-x-6">
+<span class="font-code-sm text-code-sm uppercase text-secondary-fixed hover:text-secondary-fixed transition-colors">System_Status: OK</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors">Latency: 24ms</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors">Node: 0x7DF4FF</span>
+</div>
+</footer>
+</body></html>

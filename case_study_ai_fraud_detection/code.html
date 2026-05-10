@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Study: AI Fraud Detection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#67001d",
+                      "on-surface": "#e5e1e4",
+                      "surface-tint": "#00dbe9",
+                      "on-primary-fixed": "#002022",
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#c3f400",
+                      "background": "#131315",
+                      "on-secondary-container": "#556d00",
+                      "on-secondary-fixed-variant": "#3c4d00",
+                      "secondary": "#ffffff",
+                      "inverse-on-surface": "#313032",
+                      "outline": "#849495",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#ffdadb",
+                      "surface-container-highest": "#353437",
+                      "on-primary-container": "#006970",
+                      "primary-fixed": "#7df4ff",
+                      "tertiary-container": "#ffcdd0",
+                      "surface-dim": "#131315",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary-container": "#c3f400",
+                      "on-tertiary-fixed": "#40000f",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-secondary": "#283500",
+                      "on-tertiary-fixed-variant": "#91002d",
+                      "error-container": "#93000a",
+                      "surface-variant": "#353437",
+                      "inverse-surface": "#e5e1e4",
+                      "on-tertiary-container": "#be003d",
+                      "on-surface-variant": "#b9cacb",
+                      "inverse-primary": "#006970",
+                      "primary-container": "#00f0ff",
+                      "surface-container-low": "#1c1b1d",
+                      "surface-bright": "#39393b",
+                      "tertiary-fixed-dim": "#ffb2b8",
+                      "tertiary": "#fff3f3",
+                      "on-primary": "#00363a",
+                      "surface-container-high": "#2a2a2c",
+                      "primary": "#dbfcff",
+                      "on-background": "#e5e1e4",
+                      "surface": "#131315",
+                      "outline-variant": "#3b494b",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#201f21",
+                      "secondary-fixed-dim": "#abd600",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-secondary-fixed": "#161e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "grid-columns": "12",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "bento-gap": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "body-lg": ["JetBrains Mono"],
+                      "label-caps": ["Space Grotesk"],
+                      "body-md": ["JetBrains Mono"],
+                      "code-sm": ["JetBrains Mono"],
+                      "display-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Bento Box Styles for consistent neon-noir glassmorphism */
+        .bento-box {
+            position: relative;
+            background: rgba(28, 27, 29, 0.4); /* surface-container-low */
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 0.5rem; /* xl */
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Inner dual-border for 3D depth */
+        .bento-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 0.5rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(0,219,233,0.1) 0%, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0.5) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .scanline-overlay {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.1) 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex selection:bg-primary-fixed-dim/30 selection:text-primary-fixed">
+<!-- TopNavBar -->
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out flex justify-between items-center px-margin-desktop py-4 mx-auto max-w-[1440px]">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)] tracking-tighter">
+            PSM_CORE_V1.0
+        </div>
+<div class="flex items-center gap-8 font-body-md text-body-md uppercase tracking-widest">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 rounded" href="#">Models</a>
+<a class="text-primary-fixed border-b-2 border-primary-fixed-dim pb-1 hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 rounded-t" href="#">Architecture</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 rounded" href="#">Neural_Net</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 rounded" href="#">Terminal</a>
+</div>
+<div class="flex items-center gap-4 text-primary-fixed-dim">
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded-full transition-all duration-300 active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+</button>
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded-full transition-all duration-300 active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-[280px] z-40 bg-surface-container-low/60 backdrop-blur-3xl border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex-col py-8 px-4 pt-28 group">
+<div class="mb-12 px-4">
+<div class="h-16 w-16 rounded-full border border-primary-fixed-dim/30 p-1 mb-4 relative overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover rounded-full mix-blend-screen opacity-80" data-alt="A macro photograph of an illuminated optical fiber processor core, glowing with intensely bright cyan and neon blue light against a pitch black background, highlighting intricate circuitry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUvQvNcx5ODHRnlN6lx4TnsDIfwnLPVhrKA80T2D1H_UUGZlmmwj8z2gVvlAFF_Q7RrzCLz--HANQs2Br4PddMaQcrgPgGqUTqFJejiKhUxpX9f-smOLMluImMMDtCpVSjLG8eA488nWpssGSFoAzQ7y59Xj4f9To9QqrIDf0yeqbPPlJ6NWOYeyMYJIxjCuTjSutV1SZZbvxtQN0RbeZVD7Q2nowPho5fovgB9JON5xs1Ik-tt2XpGZPcSpNieOGLDxYe_tt_wP62"/>
+<div class="absolute inset-0 rounded-full ring-2 ring-primary-fixed-dim/50 shadow-[0_0_15px_rgba(0,219,233,0.4)]"></div>
+</div>
+<h2 class="font-headline-md text-primary-fixed tracking-tight">P.S. MADHURI</h2>
+<p class="font-code-sm text-code-sm text-on-surface-variant opacity-70 mt-1">STATUS: ENCRYPTED</p>
+</div>
+<nav class="flex-1 space-y-2 font-code-sm text-code-sm">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+                Bio_Scan
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">database</span>
+                Project_Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+                Skill_Matrix
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                Contact_Init
+            </a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full py-3 border border-primary-fixed-dim/50 rounded text-primary-fixed-dim font-code-sm uppercase tracking-wider hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300">
+                INITIATE_CONTACT
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="w-full md:ml-[280px] md:pt-[88px] flex flex-col relative z-10 scanline-overlay min-h-screen">
+<!-- Background Ambient Glow -->
+<div class="absolute top-0 right-0 w-[800px] h-[600px] bg-primary-fixed-dim/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
+<div class="px-margin-mobile md:px-margin-desktop py-12 flex-1 flex flex-col gap-bento-gap max-w-[1440px] mx-auto w-full">
+<!-- HERO BENTO -->
+<header class="bento-box p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-[0.03] mix-blend-luminosity pointer-events-none" data-alt="A dark, abstract digital landscape featuring a dense network of glowing microscopic nodes interconnected by thin, vibrant blue laser lines, resembling a neural network processing vast amounts of data in a high-tech server environment."></div>
+<div class="z-10 flex flex-col gap-4 max-w-2xl">
+<div class="flex items-center gap-3">
+<span class="h-2 w-2 rounded-full bg-secondary-fixed shadow-[0_0_10px_rgba(195,244,0,0.8)] animate-pulse"></span>
+<span class="font-code-sm text-secondary-fixed uppercase tracking-widest">System Live · Latency &lt;12ms</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary-fixed drop-shadow-[0_0_15px_rgba(0,219,233,0.4)]">
+                        AI_FRAUD_DETECT<span class="text-outline">_V2</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        A highly scalable, multi-layered machine learning pipeline designed to intercept anomalous transactional patterns in real-time. Deployed across core banking infrastructure.
+                    </p>
+</div>
+<div class="z-10 flex gap-4 shrink-0">
+<button class="px-6 py-3 border border-primary-fixed-dim bg-primary-fixed-dim/10 text-primary-fixed rounded flex items-center gap-2 hover:bg-primary-fixed-dim/20 hover:shadow-[0_0_20px_rgba(0,219,233,0.3)] transition-all font-code-sm">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                        View_Source
+                    </button>
+<button class="px-6 py-3 border border-outline-variant bg-surface-container text-on-surface rounded flex items-center gap-2 hover:border-on-surface transition-all font-code-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export_Logs
+                    </button>
+</div>
+</header>
+<!-- METRICS ROW -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-bento-gap">
+<!-- Metric 1 -->
+<div class="bento-box p-6 flex flex-col gap-2 relative group">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-fixed-dim/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+                        Precision Score
+                    </span>
+<div class="font-headline-lg text-headline-lg text-on-surface flex items-baseline gap-1 mt-2">
+                        99.8<span class="text-primary-fixed-dim">%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full mt-auto overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[99.8%] shadow-[0_0_8px_rgba(0,219,233,0.8)]"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bento-box p-6 flex flex-col gap-2 relative group">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary-fixed/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                        False Positive Rate
+                    </span>
+<div class="font-headline-lg text-headline-lg text-on-surface flex items-baseline gap-1 mt-2">
+                        &lt;0.01<span class="text-secondary-fixed">%</span>
+</div>
+<div class="font-code-sm text-code-sm text-secondary-fixed mt-auto">Target: &lt;0.05%</div>
+</div>
+<!-- Metric 3 -->
+<div class="bento-box p-6 flex flex-col gap-2 relative group">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-tertiary-fixed-dim/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+                        Throughput
+                    </span>
+<div class="font-headline-lg text-headline-lg text-on-surface flex items-baseline gap-1 mt-2">
+                        1.2B<span class="text-outline text-[16px]">/mo</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant mt-auto">Peak: 14k TPS</div>
+</div>
+</div>
+<!-- ARCHITECTURE DIAGRAM -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Main Diagram Area -->
+<div class="bento-box md:col-span-8 p-8 flex flex-col min-h-[400px]">
+<div class="border-b border-white/5 pb-4 mb-6 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Hybrid Pipeline Architecture</h3>
+<span class="px-2 py-1 bg-surface-container rounded text-label-caps font-code-sm text-outline border border-outline-variant">LIVE_GRAPH</span>
+</div>
+<!-- Stylized Diagram representation -->
+<div class="flex-1 flex flex-col md:flex-row items-center justify-between gap-4 py-8 relative">
+<!-- Connection Line Background -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-surface-container-highest -translate-y-1/2 z-0"></div>
+<div class="hidden md:block absolute top-1/2 left-0 w-1/2 h-[2px] bg-gradient-to-r from-primary-fixed/20 to-secondary-fixed/50 -translate-y-1/2 z-0"></div>
+<!-- Node 1: Ingestion -->
+<div class="z-10 flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center group-hover:border-primary-fixed-dim transition-colors relative">
+<div class="absolute inset-0 bg-primary-fixed-dim/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim">stream</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Data_Ingest</span>
+</div>
+<!-- Arrow -->
+<span class="material-symbols-outlined text-outline/50 z-10 md:rotate-0 rotate-90">arrow_forward</span>
+<!-- Node 2: Feature Eng -->
+<div class="z-10 flex flex-col items-center gap-3 group">
+<div class="w-20 h-20 rounded-lg bg-surface border border-outline-variant flex items-center justify-center relative overflow-hidden group-hover:border-primary-fixed-dim transition-colors">
+<div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:4px_4px]"></div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim">account_tree</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-center">Feature<br/>Store</span>
+</div>
+<!-- Arrow -->
+<span class="material-symbols-outlined text-outline/50 z-10 md:rotate-0 rotate-90">arrow_forward</span>
+<!-- Node 3: Model 1 (XGBoost) -->
+<div class="z-10 flex flex-col items-center gap-3 group">
+<div class="w-24 h-24 rounded-lg bg-surface-container-high border border-primary-fixed-dim/30 shadow-[0_0_20px_rgba(0,219,233,0.1)] flex flex-col items-center justify-center gap-1 group-hover:border-primary-fixed-dim group-hover:shadow-[0_0_30px_rgba(0,219,233,0.2)] transition-all">
+<span class="material-symbols-outlined text-primary-fixed-dim">model_training</span>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim tracking-widest mt-1">XGBoost</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface text-center">Primary<br/>Classifier</span>
+</div>
+<!-- Split Arrow -->
+<div class="flex flex-col items-center z-10">
+<span class="material-symbols-outlined text-outline/50 md:rotate-0 rotate-90">arrow_forward</span>
+</div>
+<!-- Node 4: Model 2 (Isolation Forest) -->
+<div class="z-10 flex flex-col items-center gap-3 group">
+<div class="w-24 h-24 rounded-lg bg-surface-container border border-secondary-fixed/30 shadow-[0_0_20px_rgba(195,244,0,0.05)] flex flex-col items-center justify-center gap-1 group-hover:border-secondary-fixed group-hover:shadow-[0_0_30px_rgba(195,244,0,0.1)] transition-all">
+<span class="material-symbols-outlined text-secondary-fixed">radar</span>
+<span class="font-label-caps text-[10px] text-secondary-fixed tracking-widest mt-1">Iso_Forest</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface text-center">Anomaly<br/>Detection</span>
+</div>
+</div>
+</div>
+<!-- Legend / Details -->
+<div class="bento-box md:col-span-4 p-8 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-white/5 pb-4 mb-6">Execution Flow</h3>
+<div class="flex flex-col gap-6 flex-1">
+<div class="flex gap-4">
+<div class="w-1 h-full bg-primary-fixed-dim rounded-full shadow-[0_0_10px_rgba(0,219,233,0.5)]"></div>
+<div>
+<h4 class="font-code-sm text-primary-fixed mb-1 uppercase">Stage 01: Parallel Inferencing</h4>
+<p class="font-body-md text-on-surface-variant text-sm">Incoming telemetry is routed simultaneously to both the primary supervised model (XGBoost) and the unsupervised anomaly detector.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-1 h-full bg-secondary-fixed rounded-full shadow-[0_0_10px_rgba(195,244,0,0.5)]"></div>
+<div>
+<h4 class="font-code-sm text-secondary-fixed mb-1 uppercase">Stage 02: Ensemble Voting</h4>
+<p class="font-body-md text-on-surface-variant text-sm">Confidence scores are evaluated via a custom meta-learner. High divergence triggers manual review flags.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CODE & CHALLENGES -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-bento-gap">
+<!-- Code Snippet -->
+<div class="bento-box flex flex-col">
+<div class="flex items-center justify-between px-6 py-3 bg-surface-container-highest border-b border-white/5">
+<span class="font-code-sm text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">code</span>
+                            ensemble_router.py
+                        </span>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full border border-outline-variant"></span>
+<span class="w-3 h-3 rounded-full border border-outline-variant"></span>
+<span class="w-3 h-3 rounded-full border border-outline-variant"></span>
+</div>
+</div>
+<div class="p-6 bg-[#0e0e10] overflow-x-auto flex-1 font-code-sm text-sm leading-relaxed whitespace-pre font-body-md text-on-surface-variant">
+<span class="text-[#c678dd]">def</span> <span class="text-[#61afef]">evaluate_transaction</span>(tx_data: dict) -&gt; dict:
+    <span class="text-[#5c6370] italic"># Extract standardized features via fast cache</span>
+    features = feature_store.get(tx_data[<span class="text-[#98c379]">'user_id'</span>])
+    
+    <span class="text-[#5c6370] italic"># Parallel asynchronous inference</span>
+    xgb_score = <span class="text-[#e5c07b]">await</span> primary_classifier.predict(features)
+    iso_score = <span class="text-[#e5c07b]">await</span> anomaly_detector.score(features)
+    
+    <span class="text-[#c678dd]">if</span> xgb_score &gt; <span class="text-[#d19a66]">0.85</span> <span class="text-[#c678dd]">and</span> iso_score &lt; <span class="text-[#d19a66]">-0.6</span>:
+        <span class="text-[#c678dd]">return</span> {
+            <span class="text-[#98c379]">'status'</span>: <span class="text-[#98c379]">'BLOCK'</span>,
+            <span class="text-[#98c379]">'reason'</span>: <span class="text-[#98c379]">'HIGH_CONFIDENCE_FRAUD'</span>
+        }
+    
+    <span class="text-[#c678dd]">return</span> meta_learner.resolve(xgb_score, iso_score)
+                    </div>
+</div>
+<!-- Challenges Text -->
+<div class="bento-box p-8 flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-white/5 pb-4">Optimizations &amp; Constraints</h3>
+<ul class="space-y-6 flex-1">
+<li class="relative pl-6">
+<span class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-error border border-error-container shadow-[0_0_8px_rgba(255,180,171,0.6)]"></span>
+<h4 class="font-code-sm text-on-surface uppercase mb-1">Cold-Start Data Sparsity</h4>
+<p class="font-body-md text-on-surface-variant text-sm">New user accounts lacked sufficient historical data for the XGBoost model. Solved by increasing reliance on the Isolation Forest spatial clustering during the first 72 hours of account lifecycle.</p>
+</li>
+<li class="relative pl-6">
+<span class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-primary-fixed-dim border border-primary-fixed shadow-[0_0_8px_rgba(0,219,233,0.6)]"></span>
+<h4 class="font-code-sm text-on-surface uppercase mb-1">Inference Latency Budget</h4>
+<p class="font-body-md text-on-surface-variant text-sm">Hard requirement of &lt;15ms end-to-end response. Optimized by writing the feature extraction layer in Rust and utilizing ONNX runtime bindings for the PyTorch meta-learner.</p>
+</li>
+</ul>
+<div class="mt-auto pt-6 border-t border-white/5 flex gap-2 flex-wrap">
+<span class="px-3 py-1 bg-surface border border-outline-variant text-outline rounded uppercase font-code-sm text-[10px]">XGBOOST</span>
+<span class="px-3 py-1 bg-surface border border-outline-variant text-outline rounded uppercase font-code-sm text-[10px]">RUST</span>
+<span class="px-3 py-1 bg-surface border border-outline-variant text-outline rounded uppercase font-code-sm text-[10px]">ONNX</span>
+<span class="px-3 py-1 bg-surface border border-outline-variant text-outline rounded uppercase font-code-sm text-[10px]">KAFKA</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-auto w-full py-6 border-t border-secondary-fixed/10 bg-surface-container-lowest flex flex-row justify-between items-center px-margin-desktop cursor-crosshair z-20">
+<div class="font-code-sm text-code-sm uppercase text-secondary-fixed-dim">
+                © 2024 CORE_STUB // PSM_OS_V1.0
+            </div>
+<div class="flex gap-8 font-code-sm text-code-sm uppercase">
+<a class="text-secondary-fixed hover:text-secondary-fixed transition-colors" href="#">System_Status: OK</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Latency: 24ms</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Node: 0x7DF4FF</a>
+</div>
+</footer>
+</main>
+</body></html>

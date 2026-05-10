@@ -1,0 +1,37 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Next.js
+  - Tailwind CSS
+  - Three.js
+  - Framer Motion
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: false
+    description: Main portfolio landing page
+features:
+  - name: 3D Interaction
+    description: Interactive CyberDeck 3D core
+    files:
+      - src/components/three/CyberDeck.tsx
+      - src/components/HeroSection.tsx
+    entry_route: /
+    user_interactions:
+      - Drag to rotate the 3D model
+      - Hover over nodes to see labels
+    auth_required: false
+  - name: Contact Form
+    description: Send messages via the contact section
+    files:
+      - src/components/ContactSection.tsx
+    entry_route: /
+    user_interactions:
+      - Fill name, email, and message
+      - Click Send Message button
+    api_calls:
+      - method: POST
+        endpoint: /api/contact
+    auth_required: false
+known_limitations: []

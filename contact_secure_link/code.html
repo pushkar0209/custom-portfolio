@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Init // PSM_OS_V1.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface-container": "#201f21",
+                        "secondary-fixed": "#c3f400",
+                        "tertiary": "#fff3f3",
+                        "inverse-primary": "#006970",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed": "#40000f",
+                        "on-primary": "#00363a",
+                        "on-surface": "#e5e1e4",
+                        "surface-tint": "#00dbe9",
+                        "on-error": "#690005",
+                        "surface": "#131315",
+                        "tertiary-container": "#ffcdd0",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-tertiary-fixed-variant": "#91002d",
+                        "primary-container": "#00f0ff",
+                        "inverse-on-surface": "#313032",
+                        "outline-variant": "#3b494b",
+                        "on-tertiary": "#67001d",
+                        "background": "#131315",
+                        "secondary": "#ffffff",
+                        "inverse-surface": "#e5e1e4",
+                        "on-secondary": "#283500",
+                        "primary": "#dbfcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#556d00",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-highest": "#353437",
+                        "tertiary-fixed-dim": "#ffb2b8",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-bright": "#39393b",
+                        "secondary-fixed-dim": "#abd600",
+                        "outline": "#849495",
+                        "on-tertiary-container": "#be003d",
+                        "surface-variant": "#353437",
+                        "on-secondary-fixed-variant": "#3c4d00",
+                        "on-secondary-fixed": "#161e00",
+                        "secondary-container": "#c3f400",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-container": "#006970",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        "grid-columns": "12",
+                        "bento-gap": "16px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-caps": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "code-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-caps": ["11px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-primary-fixed-dim selection:text-on-primary">
+<!-- TopNavBar Web -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop py-4 mx-auto w-full max-w-[1440px] bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] fixed top-0 w-full z-50 transition-all duration-300 ease-out active:scale-95">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">
+            PSM_CORE_V1.0
+        </div>
+<nav class="flex gap-8">
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-2 py-1" href="#">Models</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-2 py-1" href="#">Architecture</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-2 py-1" href="#">Neural_Net</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-primary-fixed border-b-2 border-primary-fixed-dim pb-1 hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-2 py-1" href="#">Terminal</a>
+</nav>
+<div class="flex gap-4">
+<button class="text-primary-fixed-dim hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded transition-colors" data-icon="settings_input_component">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+<button class="text-primary-fixed-dim hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded transition-colors" data-icon="terminal">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-24 md:pt-[88px] max-w-[1440px] mx-auto w-full">
+<!-- SideNavBar Desktop -->
+<aside class="hidden md:flex flex-col h-full py-8 px-4 bg-surface-container-low/60 backdrop-blur-3xl fixed left-0 top-0 h-full w-[280px] z-40 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] transition-transform duration-200">
+<div class="mb-12 px-4">
+<img alt="Pushkar Sagar Madhuri - AI Engineer" class="w-16 h-16 rounded-full object-cover mb-4 border-2 border-primary-fixed-dim shadow-[0_0_15px_rgba(0,219,233,0.3)]" data-alt="A futuristic, high-contrast portrait of an AI engineer in a cyberpunk-inspired dark environment. Subtle electric cyan lighting illuminates the subject from below, reflecting off a dark metallic visor or glasses. The background features blurred, glowing code streams or server racks in deep obsidian and lime green. The overall aesthetic is gritty yet hyper-functional, conveying technical authority and neon-noir sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRN1KkIeYAeCs5oMvWgnV44DeMJhqfWLWx8MCEgaWWY8H9tneLZKU9oG0N2wE6WNq3-OYm0QAh4Az-Om8GzSYU1htN5ySjzw6S8WcrRguEGErg6Tb7cUPf4Z6Yd204Yd3zuEZACZjjF_OvQVqBWQSqlXxu2wWwzHAawt07CBQbGS-oxfF4Ziq3N2SHig-01AiVAGPbpFePJVmtgRD9vapndtIFek7vqVHWQZEvra7yPc2w0jQV8k2QtaycWDgByBRvd4WFvPxHOeyY"/>
+<h2 class="font-headline-md text-primary-fixed mb-1">P.S. MADHURI</h2>
+<p class="font-code-sm text-code-sm text-secondary-fixed-dim">STATUS: ENCRYPTED</p>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span class="font-code-sm text-code-sm">Bio_Scan</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-code-sm text-code-sm">Project_Logs</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="font-code-sm text-code-sm">Skill_Matrix</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim group" href="#">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="send">send</span>
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Contact_Init</span>
+</a>
+</nav>
+<button class="mt-auto px-4 py-3 border border-primary-fixed-dim text-primary-fixed-dim font-code-sm text-code-sm uppercase hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all">
+                INITIATE_CONTACT
+            </button>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-[280px] p-margin-mobile md:p-margin-desktop z-10 w-full relative">
+<!-- Page Header -->
+<div class="mb-12 border-b border-primary-fixed-dim/30 pb-4 flex justify-between items-end">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2 tracking-tight">SECURE_TERMINAL</h1>
+<p class="font-code-sm text-code-sm text-primary-fixed-dim opacity-80 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim shadow-[0_0_10px_rgba(0,219,233,0.8)] animate-pulse"></span>
+                        CONNECTION: ENCRYPTED &amp; ACTIVE
+                    </p>
+</div>
+<div class="text-right hidden md:block">
+<p class="font-code-sm text-code-sm text-on-surface-variant">NODE_ID: 0x7DF4FF</p>
+<p class="font-code-sm text-code-sm text-secondary-fixed-dim">UPTIME: 99.999%</p>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Transmission Form (8 columns) -->
+<div class="md:col-span-8 bg-surface-container-low/40 backdrop-blur-[40px] border-t border-l border-primary-fixed-dim/20 border-b border-r border-surface-container-highest p-8 relative shadow-[0_4px_30px_rgba(0,0,0,0.2)]">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-fixed-dim/50 to-transparent"></div>
+<h3 class="font-headline-md text-headline-md text-primary-fixed mb-6 border-b border-secondary-fixed-dim/30 pb-2">TRANSMIT_DATA</h3>
+<form class="space-y-6">
+<div class="group">
+<label class="block font-code-sm text-code-sm text-on-surface-variant mb-2 uppercase tracking-widest">Identity Signal [Name]</label>
+<input class="w-full bg-surface-dim border border-outline-variant text-on-surface font-code-sm text-body-md px-4 py-3 focus:outline-none focus:border-primary-fixed-dim focus:shadow-[0_0_10px_rgba(0,219,233,0.2)] transition-all placeholder:text-outline-variant/50" placeholder="&gt; Enter identifier..." type="text"/>
+</div>
+<div class="group">
+<label class="block font-code-sm text-code-sm text-on-surface-variant mb-2 uppercase tracking-widest">Return Frequency [Email]</label>
+<input class="w-full bg-surface-dim border border-outline-variant text-on-surface font-code-sm text-body-md px-4 py-3 focus:outline-none focus:border-primary-fixed-dim focus:shadow-[0_0_10px_rgba(0,219,233,0.2)] transition-all placeholder:text-outline-variant/50" placeholder="&gt; Establish return vector..." type="email"/>
+</div>
+<div class="group">
+<label class="block font-code-sm text-code-sm text-on-surface-variant mb-2 uppercase tracking-widest">Transmission Data [Message]</label>
+<textarea class="w-full bg-surface-dim border border-outline-variant text-on-surface font-code-sm text-body-md px-4 py-3 focus:outline-none focus:border-primary-fixed-dim focus:shadow-[0_0_10px_rgba(0,219,233,0.2)] transition-all placeholder:text-outline-variant/50 resize-none" placeholder="&gt; Encode payload here..." rows="5"></textarea>
+</div>
+<button class="w-full md:w-auto px-8 py-3 bg-transparent border border-primary-fixed-dim text-primary-fixed-dim font-code-sm text-code-sm uppercase hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_20px_rgba(0,219,233,0.4)] transition-all flex items-center justify-center gap-3" type="submit">
+                            EXECUTE_TRANSMIT
+                            <span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</form>
+</div>
+<!-- Sidecar Info (4 columns) -->
+<div class="md:col-span-4 flex flex-col gap-bento-gap">
+<!-- Location / Status Cell -->
+<div class="bg-surface-container-low/40 backdrop-blur-[40px] border-t border-l border-primary-fixed-dim/20 border-b border-r border-surface-container-highest p-6 shadow-[0_4px_30px_rgba(0,0,0,0.2)]">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4 border-b border-white/10 pb-2">TELEMETRY</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim mt-1" data-icon="my_location">my_location</span>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface opacity-80">CURRENT_LOC</p>
+<p class="font-body-md text-body-md text-primary-fixed">Hyderabad, TS</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim mt-1" data-icon="power">power</span>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface opacity-80">AVAILABILITY</p>
+<p class="font-body-md text-body-md text-secondary-fixed">ACCEPTING_CONNECTIONS</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Direct Links Cell -->
+<div class="bg-surface-container-low/40 backdrop-blur-[40px] border-t border-l border-primary-fixed-dim/20 border-b border-r border-surface-container-highest p-6 shadow-[0_4px_30px_rgba(0,0,0,0.2)] flex-1">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4 border-b border-white/10 pb-2">EXTERNAL_VECTORS</h4>
+<div class="flex flex-col gap-3">
+<a class="flex items-center justify-between p-3 bg-surface-dim border border-outline-variant/30 hover:border-primary-fixed-dim/50 hover:bg-primary-fixed-dim/5 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors" data-icon="link">link</span>
+<span class="font-code-sm text-code-sm text-on-surface">LinkedIn_Protocol</span>
+</div>
+<span class="material-symbols-outlined text-xs text-on-surface-variant opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface-dim border border-outline-variant/30 hover:border-primary-fixed-dim/50 hover:bg-primary-fixed-dim/5 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors" data-icon="code">code</span>
+<span class="font-code-sm text-code-sm text-on-surface">GitHub_Repository</span>
+</div>
+<span class="material-symbols-outlined text-xs text-on-surface-variant opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface-dim border border-outline-variant/30 hover:border-secondary-fixed-dim/50 hover:bg-secondary-fixed-dim/5 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary-fixed-dim transition-colors" data-icon="description">description</span>
+<span class="font-code-sm text-code-sm text-on-surface">Download_Resume.pdf</span>
+</div>
+<span class="material-symbols-outlined text-xs text-on-surface-variant opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all" data-icon="download">download</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="md:ml-[280px] flex flex-row justify-between items-center px-margin-desktop w-full py-6 border-t border-secondary-fixed/10 bg-surface-container-lowest mt-auto z-20 relative cursor-crosshair">
+<div class="font-code-sm text-code-sm uppercase text-secondary-fixed-dim opacity-70">
+            © 2024 CORE_STUB // PSM_OS_V1.0
+        </div>
+<div class="flex gap-6">
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors">System_Status: OK</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors">Latency: 24ms</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors">Node: 0x7DF4FF</span>
+</div>
+</footer>
+</body></html>

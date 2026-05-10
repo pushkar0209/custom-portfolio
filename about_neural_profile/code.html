@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About - PSM_OS_V1.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface-container": "#201f21",
+                        "secondary-fixed": "#c3f400",
+                        "tertiary": "#fff3f3",
+                        "inverse-primary": "#006970",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed": "#40000f",
+                        "on-primary": "#00363a",
+                        "on-surface": "#e5e1e4",
+                        "surface-tint": "#00dbe9",
+                        "on-error": "#690005",
+                        "surface": "#131315",
+                        "tertiary-container": "#ffcdd0",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-tertiary-fixed-variant": "#91002d",
+                        "primary-container": "#00f0ff",
+                        "inverse-on-surface": "#313032",
+                        "outline-variant": "#3b494b",
+                        "on-tertiary": "#67001d",
+                        "background": "#131315",
+                        "secondary": "#ffffff",
+                        "inverse-surface": "#e5e1e4",
+                        "on-secondary": "#283500",
+                        "primary": "#dbfcff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#556d00",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-highest": "#353437",
+                        "tertiary-fixed-dim": "#ffb2b8",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-bright": "#39393b",
+                        "secondary-fixed-dim": "#abd600",
+                        "outline": "#849495",
+                        "on-tertiary-container": "#be003d",
+                        "surface-variant": "#353437",
+                        "on-secondary-fixed-variant": "#3c4d00",
+                        "on-secondary-fixed": "#161e00",
+                        "secondary-container": "#c3f400",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-container": "#006970",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        "grid-columns": "12",
+                        "bento-gap": "16px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-caps": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom UI Elements based on Style Guidance */
+        .glass-panel {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(0, 219, 233, 0.1);
+        }
+        
+        .bento-cell {
+            position: relative;
+        }
+        .bento-cell::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+        
+        .emissive-pip {
+            box-shadow: 0 0 10px rgba(195, 244, 0, 0.8), 0 0 20px rgba(195, 244, 0, 0.4);
+        }
+        .emissive-pip-cyan {
+            box-shadow: 0 0 10px rgba(0, 219, 233, 0.8), 0 0 20px rgba(0, 219, 233, 0.4);
+        }
+        
+        .scan-line {
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #c3f400, transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col md:flex-row overflow-x-hidden selection:bg-primary-fixed-dim/30 selection:text-primary-fixed">
+<!-- TopNavBar (Web/Tablet) -->
+<nav class="hidden md:flex bg-surface-container/40 backdrop-blur-[40px] fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out flex-row justify-between items-center px-margin-desktop py-4 mx-auto max-w-[1440px]">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">PSM_CORE_V1.0</span>
+</div>
+<div class="flex items-center gap-8">
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-2 rounded-DEFAULT" href="#">Models</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-2 rounded-DEFAULT" href="#">Architecture</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-2 rounded-DEFAULT" href="#">Neural_Net</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-primary-fixed border-b-2 border-primary-fixed-dim pb-1 px-3 py-2" href="#">Terminal</a>
+</div>
+<div class="flex items-center gap-4 text-primary-fixed-dim">
+<button class="hover:bg-primary/10 p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+<button class="hover:bg-primary/10 p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Dashboard Layout) -->
+<!-- Suppressed due to semantic shell mandate: About/Details page is often a focused canvas, but if we treat this as a deep dive into the 'Bio_Scan', we might keep it. Let's assume it's part of the main ecosystem for the portfolio context. -->
+<aside class="hidden xl:flex bg-surface-container-low/60 backdrop-blur-3xl fixed left-0 top-0 h-full w-[280px] z-40 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex-col py-8 px-4 mt-[72px]">
+<div class="mb-12 flex flex-col gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-fixed-dim p-1 relative">
+<img alt="Pushkar Sagar Madhuri - AI Engineer" class="w-full h-full object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-500" data-alt="A futuristic, cyberpunk-style portrait of an AI engineer working in a dark room illuminated by cyan and neon green monitor glows. The atmosphere is intense, focused, and highly technical. High contrast lighting with emissive data streams visible in the reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCICd8flCwLxo3dmVW7sBFbaHq8EdJFzO93TNmS1gRXl83MSAh1mvi_2qL4LjKIjkUenDVLIazI0_nghGEskagRJrR9es9PfK6dGzDlUVlhKrhmAatSsLxHDUPokg_AQNigP80Vu3cXNvOTBB4tVzN8pkHYexDnm0avBtuI0YJAA2EuIEgKX3qJE4MNtswvY9sh2U5KRuyDL0CZ8MJ1lvCC0s58RQ4U_ddtddpf4IIxMZciHSL7qiKVeFUBdXwwCsf-beyl8M-MhLL4"/>
+<div class="absolute bottom-1 right-1 w-3 h-3 bg-secondary-fixed rounded-full emissive-pip"></div>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary-fixed mt-2">P.S. MADHURI</h2>
+<p class="font-code-sm text-code-sm text-secondary-fixed-dim flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                STATUS: ENCRYPTED
+            </p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 px-4 py-3 font-code-sm text-code-sm bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+                Bio_Scan
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                Project_Logs
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+                Skill_Matrix
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                Contact_Init
+            </a>
+</nav>
+<button class="mt-auto w-full py-3 border border-primary-fixed-dim text-primary-fixed-dim font-label-caps text-label-caps hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300 flex justify-center items-center gap-2">
+            INITIATE_CONTACT
+            <span class="material-symbols-outlined text-[16px]">terminal</span>
+</button>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 w-full xl:pl-[280px] pt-[80px] md:pt-[104px] pb-24 px-margin-mobile md:px-margin-desktop min-h-screen relative">
+<!-- Background Grid Pattern -->
+<div class="fixed inset-0 pointer-events-none opacity-5" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- Page Header -->
+<header class="mb-12 border-b border-white/5 pb-6">
+<h1 class="font-display-lg text-display-lg text-primary-fixed drop-shadow-[0_0_15px_rgba(0,219,233,0.4)] mb-2">BIO_SCAN_PROTOCOL</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary-fixed rounded-full inline-block emissive-pip"></span>
+                Parsing dual-degree neural pathways and ML architectural implementations.
+            </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-bento-gap">
+<!-- Technical Timeline (8 cols Desktop) -->
+<section class="col-span-4 md:col-span-8 bg-surface-container-low/80 glass-panel rounded-lg p-6 bento-cell z-10 hover:bg-surface-container-low transition-colors duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.2)]">
+<div class="flex items-center gap-3 border-b border-secondary-fixed/30 pb-3 mb-6">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="timeline">timeline</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">ACADEMIC_PATHWAYS</h2>
+</div>
+<div class="relative pl-6 border-l border-white/10 space-y-8">
+<!-- IIT Jodhpur -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-3 h-3 bg-surface border-2 border-primary-fixed-dim rounded-full emissive-pip-cyan"></div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-lg text-[20px] font-semibold text-primary">B.S. in Physics</h3>
+<span class="font-code-sm text-code-sm text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">2023 - 2027 (EXPECTED)</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-3">INDIAN INSTITUTE OF TECHNOLOGY, JODHPUR</p>
+<ul class="space-y-2 font-body-md text-body-md text-on-surface-variant/80">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed/70 mt-1">subdirectory_arrow_right</span>
+                                Specializing in computational physics and quantum ML architectures.
+                            </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed/70 mt-1">subdirectory_arrow_right</span>
+                                CGPA: 8.5/10 (Core Modules)
+                            </li>
+</ul>
+</div>
+<!-- JNTUH -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-3 h-3 bg-surface border-2 border-primary-fixed-dim rounded-full opacity-50"></div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-lg text-[20px] font-semibold text-on-surface">B.Tech in Comp. Sci. &amp; AI/ML</h3>
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-variant px-2 py-1 rounded">2023 - 2027 (EXPECTED)</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-3">JNTU HYDERABAD</p>
+<ul class="space-y-2 font-body-md text-body-md text-on-surface-variant/80">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-white/30 mt-1">subdirectory_arrow_right</span>
+                                Core focus on Deep Learning, NLP, and scalable backend systems.
+                            </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Quick Stats/Info (4 cols Desktop) -->
+<section class="col-span-4 md:col-span-4 flex flex-col gap-bento-gap">
+<!-- Location Card -->
+<div class="bg-surface-container-low/80 glass-panel rounded-lg p-6 bento-cell flex-1 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&amp;fit=crop&amp;q=80&amp;w=800')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500" data-alt="A dark, moody, aerial view of a neon-lit futuristic metropolis at night. The city grid glows with cyan and lime green lights, resembling a massive circuit board. High contrast, cinematic lighting, cyberpunk aesthetic." data-location="India" style=""></div>
+<div class="relative z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-[48px] text-primary-fixed-dim mb-4" data-icon="my_location">my_location</span>
+<h3 class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-widest mb-1">CURRENT_NODE</h3>
+<p class="font-headline-md text-headline-md text-primary">INDIA</p>
+<div class="mt-4 flex items-center gap-2 text-secondary-fixed">
+<span class="w-2 h-2 bg-secondary-fixed rounded-full emissive-pip"></span>
+<span class="font-code-sm text-code-sm">SYS_ONLINE</span>
+</div>
+</div>
+</div>
+<!-- Languages Card -->
+<div class="bg-surface-container-low/80 glass-panel rounded-lg p-6 bento-cell">
+<h3 class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-widest border-b border-white/5 pb-2 mb-4">BASE_LANGUAGES</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface border border-primary-fixed-dim text-primary-fixed-dim font-code-sm text-[11px] uppercase">Python</span>
+<span class="px-3 py-1 bg-surface border border-white/10 text-on-surface-variant font-code-sm text-[11px] uppercase">C++</span>
+<span class="px-3 py-1 bg-surface border border-white/10 text-on-surface-variant font-code-sm text-[11px] uppercase">JavaScript</span>
+<span class="px-3 py-1 bg-surface border border-white/10 text-on-surface-variant font-code-sm text-[11px] uppercase">TypeScript</span>
+<span class="px-3 py-1 bg-surface border border-white/10 text-on-surface-variant font-code-sm text-[11px] uppercase">SQL</span>
+</div>
+</div>
+</section>
+<!-- Skills Matrix (12 cols Desktop) -->
+<section class="col-span-4 md:col-span-12 bg-surface-container-low/80 glass-panel rounded-lg p-6 bento-cell mt-4">
+<div class="flex items-center gap-3 border-b border-primary-fixed-dim/30 pb-3 mb-6">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="memory">memory</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">SKILL_MATRIX_V2.4</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- AI/ML -->
+<div class="bg-surface/50 p-4 rounded border border-white/5 hover:border-primary-fixed-dim/30 transition-colors">
+<h3 class="font-label-caps text-label-caps text-primary-fixed mb-4">ARTIFICIAL_INTELLIGENCE</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">TensorFlow / PyTorch</span>
+<span class="text-primary-fixed-dim">90%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-primary-fixed-dim w-[90%] shadow-[0_0_5px_rgba(0,219,233,0.5)]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Computer Vision (OpenCV)</span>
+<span class="text-primary-fixed-dim">85%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-primary-fixed-dim w-[85%]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">NLP &amp; LLMs</span>
+<span class="text-primary-fixed-dim">80%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-primary-fixed-dim w-[80%]"></div></div>
+</div>
+</div>
+</div>
+<!-- Backend -->
+<div class="bg-surface/50 p-4 rounded border border-white/5 hover:border-secondary-fixed/30 transition-colors">
+<h3 class="font-label-caps text-label-caps text-secondary-fixed mb-4">BACKEND_SYSTEMS</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Node.js / Express</span>
+<span class="text-secondary-fixed">88%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-secondary-fixed w-[88%] shadow-[0_0_5px_rgba(195,244,0,0.5)]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Django / FastAPI</span>
+<span class="text-secondary-fixed">82%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-secondary-fixed w-[82%]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">PostgreSQL / MongoDB</span>
+<span class="text-secondary-fixed">85%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-secondary-fixed w-[85%]"></div></div>
+</div>
+</div>
+</div>
+<!-- Frontend -->
+<div class="bg-surface/50 p-4 rounded border border-white/5 hover:border-tertiary-fixed-dim/30 transition-colors">
+<h3 class="font-label-caps text-label-caps text-tertiary-fixed-dim mb-4">FRONTEND_DEV</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">React / Next.js</span>
+<span class="text-tertiary-fixed-dim">92%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-tertiary-fixed-dim w-[92%] shadow-[0_0_5px_rgba(255,178,184,0.5)]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Tailwind CSS</span>
+<span class="text-tertiary-fixed-dim">95%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-tertiary-fixed-dim w-[95%]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Three.js / WebGL</span>
+<span class="text-tertiary-fixed-dim">70%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-tertiary-fixed-dim w-[70%]"></div></div>
+</div>
+</div>
+</div>
+<!-- DevOps -->
+<div class="bg-surface/50 p-4 rounded border border-white/5 hover:border-white/30 transition-colors">
+<h3 class="font-label-caps text-label-caps text-on-surface mb-4">DEVOPS_&amp;_INFRA</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Docker / Containers</span>
+<span class="text-on-surface">80%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-on-surface-variant w-[80%]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">AWS (EC2, S3)</span>
+<span class="text-on-surface">75%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-on-surface-variant w-[75%]"></div></div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-[11px] mb-1">
+<span class="text-on-surface">Git / CI/CD</span>
+<span class="text-on-surface">88%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-on-surface-variant w-[88%]"></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Protocol Logs (Achievements) (12 cols Desktop) -->
+<section class="col-span-4 md:col-span-12 mt-4 relative">
+<div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-6">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="list_alt">list_alt</span>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant">PROTOCOL_LOGS // ACHIEVEMENTS</h2>
+</div>
+<div class="bg-surface-container-lowest border border-white/5 rounded font-code-sm text-code-sm text-on-surface-variant overflow-hidden">
+<!-- Log Headers -->
+<div class="grid grid-cols-12 gap-4 p-3 bg-surface-container-low border-b border-white/5 uppercase tracking-widest text-[10px]">
+<div class="col-span-2">TIMESTAMP</div>
+<div class="col-span-3">EVENT_TYPE</div>
+<div class="col-span-5">DESCRIPTION</div>
+<div class="col-span-2 text-right">STATUS</div>
+</div>
+<!-- Log Entries -->
+<div class="divide-y divide-white/5">
+<div class="grid grid-cols-12 gap-4 p-3 hover:bg-surface-container/50 transition-colors group">
+<div class="col-span-2 text-primary-fixed-dim opacity-70 group-hover:opacity-100">2024.03.15</div>
+<div class="col-span-3 text-secondary-fixed">HACKATHON_WIN</div>
+<div class="col-span-5 text-on-surface truncate">1st Place - Smart India Hackathon (SIH) 2023</div>
+<div class="col-span-2 text-right text-primary-fixed">[SUCCESS]</div>
+</div>
+<div class="grid grid-cols-12 gap-4 p-3 hover:bg-surface-container/50 transition-colors group bg-surface-container/20">
+<div class="col-span-2 text-primary-fixed-dim opacity-70 group-hover:opacity-100">2023.11.02</div>
+<div class="col-span-3 text-tertiary-fixed-dim">COMPETITION</div>
+<div class="col-span-5 text-on-surface truncate">Top 10 Finalist - NASA Space Apps Challenge</div>
+<div class="col-span-2 text-right text-primary-fixed">[VERIFIED]</div>
+</div>
+<div class="grid grid-cols-12 gap-4 p-3 hover:bg-surface-container/50 transition-colors group">
+<div class="col-span-2 text-primary-fixed-dim opacity-70 group-hover:opacity-100">2023.08.20</div>
+<div class="col-span-3 text-primary-fixed-dim">CERTIFICATION</div>
+<div class="col-span-5 text-on-surface truncate">AWS Certified Machine Learning – Specialty</div>
+<div class="col-span-2 text-right text-primary-fixed">[ACQUIRED]</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-6 border-t border-secondary-fixed/20 bg-surface-container-lowest mt-auto flex flex-col md:flex-row justify-between items-center px-margin-desktop md:pl-[328px] relative z-50">
+<div class="font-code-sm text-code-sm uppercase text-on-surface-variant mb-4 md:mb-0">
+            © 2024 CORE_STUB // PSM_OS_V1.0
+        </div>
+<div class="flex gap-6 font-code-sm text-code-sm uppercase text-on-surface-variant cursor-crosshair">
+<span class="hover:text-secondary-fixed transition-colors flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary-fixed rounded-full inline-block emissive-pip"></span>
+                System_Status: OK
+            </span>
+<span class="hover:text-secondary-fixed transition-colors">Latency: 24ms</span>
+<span class="hover:text-secondary-fixed transition-colors text-primary-fixed-dim">Node: 0x7DF4FF</span>
+</div>
+</footer>
+</body></html>

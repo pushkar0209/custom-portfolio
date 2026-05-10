@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PSM_OS_V1.0 // Technical Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131315",
+                      "surface-container-low": "#1c1b1d",
+                      "surface-container": "#201f21",
+                      "secondary-fixed": "#c3f400",
+                      "tertiary": "#fff3f3",
+                      "inverse-primary": "#006970",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-tertiary-fixed": "#40000f",
+                      "on-primary": "#00363a",
+                      "on-surface": "#e5e1e4",
+                      "surface-tint": "#00dbe9",
+                      "on-error": "#690005",
+                      "surface": "#131315",
+                      "tertiary-container": "#ffcdd0",
+                      "on-primary-fixed": "#002022",
+                      "tertiary-fixed": "#ffdadb",
+                      "on-tertiary-fixed-variant": "#91002d",
+                      "primary-container": "#00f0ff",
+                      "inverse-on-surface": "#313032",
+                      "outline-variant": "#3b494b",
+                      "on-tertiary": "#67001d",
+                      "background": "#131315",
+                      "secondary": "#ffffff",
+                      "inverse-surface": "#e5e1e4",
+                      "on-secondary": "#283500",
+                      "primary": "#dbfcff",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary-container": "#556d00",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#7df4ff",
+                      "surface-container-lowest": "#0e0e10",
+                      "surface-container-highest": "#353437",
+                      "tertiary-fixed-dim": "#ffb2b8",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-bright": "#39393b",
+                      "secondary-fixed-dim": "#abd600",
+                      "outline": "#849495",
+                      "on-tertiary-container": "#be003d",
+                      "surface-variant": "#353437",
+                      "on-secondary-fixed-variant": "#3c4d00",
+                      "on-secondary-fixed": "#161e00",
+                      "secondary-container": "#c3f400",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e5e1e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "48px",
+                      "margin-mobile": "16px",
+                      "grid-columns": "12",
+                      "bento-gap": "16px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "code-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (JSON Generated) -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center px-margin-desktop py-4 mx-auto w-full max-w-[1440px]">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">
+                PSM_CORE_V1.0
+            </div>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md uppercase tracking-widest">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300 ease-out active:scale-95 px-3 py-1 rounded" href="#">Models</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300 ease-out active:scale-95 px-3 py-1 rounded" href="#">Architecture</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300 ease-out active:scale-95 px-3 py-1 rounded" href="#">Neural_Net</a>
+<a class="text-primary-fixed border-b-2 border-primary-fixed-dim pb-1 hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all duration-300 ease-out active:scale-95 px-3 rounded-t" href="#">Terminal</a>
+</div>
+<div class="flex items-center gap-4 text-primary-fixed-dim">
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded transition-all duration-300 ease-out active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+<button class="hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] p-2 rounded transition-all duration-300 ease-out active:scale-95">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Layout Grid -->
+<div class="flex-1 flex w-full pt-24 max-w-[1600px] mx-auto">
+<!-- SideNavBar (JSON Generated - Desktop Only for Context) -->
+<aside class="hidden xl:flex flex-col fixed left-0 top-0 h-full w-[280px] z-40 bg-surface-container-low/60 backdrop-blur-3xl border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] pt-24 py-8 px-4 font-code-sm text-code-sm">
+<div class="mb-12 px-4 border-l-2 border-primary-fixed-dim pl-4">
+<h2 class="font-headline-md text-primary-fixed tracking-wide">P.S. MADHURI</h2>
+<p class="text-on-surface-variant mt-2">STATUS: ENCRYPTED</p>
+<img alt="Avatar" class="w-16 h-16 rounded mt-4 border border-white/10 opacity-80 mix-blend-luminosity" data-alt="A highly stylized, cyberpunk-inspired avatar of an AI engineer. The image features deep shadows and neon cyan lighting illuminating the subject's face against an obsidian void. The visual style is gritty, high-tech, and neon-noir, emphasizing precision and technological authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Tcl3bfUysVJJuSNJAZYGdfYqMNZBVvCRXOuzozmVwXu0gQMWHLAB6j7fYByvUZqKaKyFz8cDpHXZFOwZ_stBbx2YptKABHSz2etHFG-k1_yAZx07g8S9DPk4jFPm0CUyp-1Lz3dd5MyrxGjLXZx0MFWJ1u4n1UEQfrGb6Dji6U2BXwKmWkHuwgvBt0SDu7zgh2njWM6WIdOFwpMU0Z5Pyqba-2XrJiirwkQW5llxMR1gJ0al4RbunC0GVGqSglGB5BJYY36lyc0u"/>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="fingerprint">fingerprint</span>
+                    Bio_Scan
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim rounded-r" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                    Project_Logs
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="memory">memory</span>
+                    Skill_Matrix
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary group-hover:translate-x-1 transition-transform duration-200 rounded" href="#">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="send">send</span>
+                    Contact_Init
+                </a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full py-3 border border-primary-fixed-dim text-primary-fixed-dim hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] transition-all rounded font-label-caps text-label-caps tracking-widest relative overflow-hidden group">
+<span class="relative z-10">INITIATE_CONTACT</span>
+<div class="absolute inset-0 bg-primary-fixed-dim opacity-0 group-hover:opacity-10 transition-opacity"></div>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full xl:ml-[280px] px-margin-mobile md:px-margin-desktop py-8 max-w-7xl mx-auto">
+<!-- Page Header -->
+<header class="mb-12 border-b border-white/5 pb-8 relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed-dim/5 rounded-full blur-[60px] pointer-events-none"></div>
+<div class="inline-block px-3 py-1 mb-4 border border-secondary-fixed/30 bg-secondary-fixed/5 text-secondary-fixed font-code-sm text-code-sm rounded">
+                    &gt; STATUS: LIVE_STREAM
+                </div>
+<h1 class="font-display-lg text-display-lg text-primary-fixed mb-4">SYSTEM_LOGS // BLOG</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-primary-fixed/30 pl-4">
+                    Documenting signal processing, neural architecture, and system design in high-availability environments. Data streams updated asynchronously.
+                </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Featured Post (Spans 8 cols) -->
+<article class="md:col-span-8 bg-surface-container-low/40 backdrop-blur-[40px] border border-t-white/10 border-l-white/10 border-b-black/50 border-r-black/50 rounded-lg overflow-hidden group hover:shadow-[0_0_30px_rgba(0,219,233,0.1)] transition-all duration-300 relative">
+<!-- Top subtle accent line -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary-fixed-dim/50 to-transparent"></div>
+<div class="h-64 w-full relative overflow-hidden bg-surface-dim">
+<img alt="AI Concepts Visualization" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" data-alt="Abstract 3D visualization of a neural network utilizing neon glowing lines connecting scattered nodes in an obsidian void. The visual emphasizes deep darks contrasting with intense cyan and cyber lime emissive colors, conveying a highly technical, glassmorphism-inspired AI system design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIYsEqcWSrMdLq6rMAc87SIZehdRrnhm8AWM8GF853FO_r5GinBLQ7y0FUlDt25BbBH5v0mSBhE8eOC2KYpzSpFyQPysz18ZQr6YMicyHtfZqQPq8K46pCgrGAcINIHGKHE4YP9apF7Rxi_i-fiFmUf3YaVn0ChB2JnTN5d_IsmxjQRNUzWlXEypRmd1Cbx4BaJI7zLUdj51ucy4WDeVrlCaeqfGerStN9guqp8M3h8dYKSqIZIUTj4mqgbwuRyB33cuutGpnd6iQN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-2 py-1 bg-primary-fixed-dim text-on-primary-fixed font-code-sm text-code-sm rounded-sm">AI Concepts</span>
+<span class="px-2 py-1 bg-surface-dim text-on-surface-variant border border-white/10 font-code-sm text-code-sm rounded-sm">v2.4.1</span>
+</div>
+</div>
+<div class="p-8">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-3">Optimizing Transformer Attention Mechanisms</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                            A deep dive into reducing O(N²) complexity in standard self-attention layers. Implementing sparse attention patterns and hardware-aware kernel optimizations to handle 100k+ token contexts efficiently in production environments.
+                        </p>
+<!-- Simulated Code Snippet Preview -->
+<div class="bg-surface-dim rounded border border-white/5 p-4 mb-6 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-secondary-fixed"></div>
+<pre class="font-code-sm text-code-sm text-on-surface/80 overflow-x-auto"><code><span class="text-secondary-fixed">def</span> <span class="text-primary-fixed">sparse_attention</span>(q, k, v, mask=None):
+    <span class="text-on-surface-variant"># Initialize block-sparse pattern</span>
+    blocks = get_block_mask(q.shape, sparsity=0.8)
+    scores = torch.matmul(q, k.transpose(-2, -1)) / math.sqrt(d_k)
+    <span class="text-secondary-fixed">return</span> apply_mask(scores, blocks)</code></pre>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/5">
+<div class="flex items-center gap-2 text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                                14 Min Read
+                            </div>
+<a class="text-primary-fixed-dim font-code-sm text-code-sm hover:text-primary flex items-center gap-1 group/link" href="#">
+                                READ_FILE <span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-1 transition-transform" data-icon="arrow_right_alt">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Sidebar Content (Spans 4 cols) -->
+<div class="md:col-span-4 flex flex-col gap-bento-gap">
+<!-- System Design Card -->
+<article class="bg-surface-container-low/40 backdrop-blur-[40px] border border-t-white/10 border-l-white/10 border-b-black/50 border-r-black/50 rounded-lg p-6 relative group">
+<div class="absolute left-0 top-4 w-1 h-8 bg-secondary-fixed rounded-r"></div>
+<div class="flex justify-between items-start mb-4 pl-3">
+<span class="px-2 py-1 bg-surface-dim text-secondary-fixed border border-secondary-fixed/20 font-code-sm text-code-sm rounded-sm">System Design</span>
+<div class="w-2 h-2 rounded-full bg-secondary-fixed shadow-[0_0_8px_#c3f400]"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 pl-3 group-hover:text-primary transition-colors">Distributed Cache Coherency</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 pl-3">
+                            Resolving race conditions in multi-region Redis clusters using vector clocks and CRDTs.
+                        </p>
+<a class="pl-3 text-secondary-fixed-dim font-code-sm text-code-sm hover:text-secondary-fixed flex items-center gap-1" href="#">
+                            EXECUTE_READ <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</article>
+<!-- Learning Journeys Card -->
+<article class="bg-surface-container-low/40 backdrop-blur-[40px] border border-t-white/10 border-l-white/10 border-b-black/50 border-r-black/50 rounded-lg p-6 relative group">
+<div class="absolute left-0 top-4 w-1 h-8 bg-primary-fixed-dim rounded-r"></div>
+<div class="flex justify-between items-start mb-4 pl-3">
+<span class="px-2 py-1 bg-surface-dim text-primary-fixed-dim border border-primary-fixed-dim/20 font-code-sm text-code-sm rounded-sm">Learning Journeys</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 pl-3 group-hover:text-primary transition-colors">CUDA Kernel Optimization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 pl-3">
+                            From PyTorch high-level ops to writing custom C++ CUDA kernels for 40% performance gains.
+                        </p>
+<a class="pl-3 text-primary-fixed-dim font-code-sm text-code-sm hover:text-primary flex items-center gap-1" href="#">
+                            EXECUTE_READ <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</article>
+<!-- Newsletter Subscription (Initialize Feed) -->
+<div class="bg-surface-container/60 backdrop-blur-[40px] border border-white/5 rounded-lg p-6 mt-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+<h4 class="font-headline-md text-headline-md text-primary-fixed mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span> Initialize Feed
+                        </h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                            Subscribe to raw telemetry data and periodic transmission logs.
+                        </p>
+<form class="flex flex-col gap-3">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-code-sm text-on-surface-variant">&gt;</span>
+<input class="w-full bg-surface-dim border border-white/10 rounded px-8 py-2 font-code-sm text-code-sm text-primary focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim focus:outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="enter_endpoint@node.local" type="email"/>
+</div>
+<button class="w-full py-2 bg-transparent border border-primary-fixed-dim text-primary-fixed-dim hover:bg-primary-fixed-dim/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.2)] rounded font-code-sm text-code-sm tracking-wide transition-all duration-300" type="button">
+                                SUBSCRIBE_PORT
+                            </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Secondary Post List (Bento Row) -->
+<div class="mt-bento-gap grid grid-cols-1 md:grid-cols-2 gap-bento-gap">
+<!-- Post 1 -->
+<article class="bg-surface-container-low/30 backdrop-blur-xl border border-white/5 rounded-lg p-6 flex gap-6 group hover:bg-surface-container-low/50 transition-colors">
+<div class="hidden sm:block w-24 h-24 bg-surface-dim rounded border border-white/10 shrink-0 relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center text-primary-fixed-dim opacity-30 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[40px]" data-icon="memory">memory</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex gap-2 mb-2">
+<span class="px-2 py-0.5 bg-surface-dim text-on-surface-variant border border-white/5 font-code-sm text-[10px] rounded-sm">Hardware</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface group-hover:text-primary mb-2">TPU Architecture Parsing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
+                            Analyzing the systolic array design in modern Tensor Processing Units for matrix multiplication.
+                        </p>
+<a class="text-primary-fixed-dim font-code-sm text-code-sm hover:text-primary" href="#">READ_FILE</a>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="bg-surface-container-low/30 backdrop-blur-xl border border-white/5 rounded-lg p-6 flex gap-6 group hover:bg-surface-container-low/50 transition-colors">
+<div class="hidden sm:block w-24 h-24 bg-surface-dim rounded border border-white/10 shrink-0 relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center text-secondary-fixed opacity-30 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[40px]" data-icon="data_object">data_object</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex gap-2 mb-2">
+<span class="px-2 py-0.5 bg-surface-dim text-on-surface-variant border border-white/5 font-code-sm text-[10px] rounded-sm">Algorithms</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface group-hover:text-primary mb-2">Graph Neural Networks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
+                            Implementing message passing algorithms for complex relationship modeling in unstructured datasets.
+                        </p>
+<a class="text-secondary-fixed font-code-sm text-code-sm hover:text-secondary" href="#">READ_FILE</a>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- Footer (JSON Generated) -->
+<footer class="w-full py-6 border-t border-secondary-fixed/20 bg-surface-container-lowest mt-12 z-10 relative">
+<div class="flex flex-row justify-between items-center px-margin-desktop w-full mx-auto max-w-[1600px] xl:pl-[328px]">
+<div class="font-code-sm text-code-sm uppercase text-secondary-fixed-dim">
+                © 2024 CORE_STUB // PSM_OS_V1.0
+            </div>
+<div class="flex items-center gap-6 font-code-sm text-code-sm uppercase">
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-crosshair" href="#">System_Status: OK</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-crosshair hidden sm:block" href="#">Latency: 24ms</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-crosshair hidden md:block" href="#">Node: 0x7DF4FF</a>
+</div>
+</div>
+</footer>
+</body></html>

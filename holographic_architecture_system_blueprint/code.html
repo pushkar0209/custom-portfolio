@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PSM_CORE_V1.0 // System Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(20, 19, 21, 0.4);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(0, 219, 233, 0.1);
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05), 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .bento-cell {
+            border-top: 1px solid rgba(0, 219, 233, 0.2);
+            border-left: 1px solid rgba(0, 219, 233, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+        }
+        .emissive-cyan {
+            text-shadow: 0 0 10px rgba(0, 219, 233, 0.5);
+        }
+        .scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 219, 233, 0.02) 50%);
+            background-size: 100% 4px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#c3f400",
+                    "surface-variant": "#353437",
+                    "error-container": "#93000a",
+                    "tertiary": "#fff3f3",
+                    "on-primary-fixed-variant": "#004f54",
+                    "secondary-container": "#c3f400",
+                    "outline-variant": "#3b494b",
+                    "surface-bright": "#39393b",
+                    "inverse-primary": "#006970",
+                    "on-primary": "#00363a",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "on-background": "#e5e1e4",
+                    "surface-dim": "#131315",
+                    "inverse-surface": "#e5e1e4",
+                    "tertiary-container": "#ffcdd0",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "on-secondary-fixed": "#161e00",
+                    "on-primary-container": "#006970",
+                    "primary-container": "#00f0ff",
+                    "on-tertiary": "#67001d",
+                    "surface-tint": "#00dbe9",
+                    "secondary": "#ffffff",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-container-high": "#2a2a2c",
+                    "primary-fixed-dim": "#00dbe9",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#556d00",
+                    "surface-container": "#201f21",
+                    "on-tertiary-fixed": "#40000f",
+                    "on-secondary-fixed-variant": "#3c4d00",
+                    "secondary-fixed-dim": "#abd600",
+                    "on-tertiary-container": "#be003d",
+                    "on-secondary": "#283500",
+                    "surface-container-highest": "#353437",
+                    "inverse-on-surface": "#313032",
+                    "background": "#131315",
+                    "tertiary-fixed": "#ffdadb",
+                    "surface-container-low": "#1c1b1d",
+                    "surface": "#131315",
+                    "primary-fixed": "#7df4ff",
+                    "on-primary-fixed": "#002022",
+                    "on-surface": "#e5e1e4",
+                    "primary": "#dbfcff",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "grid-columns": "12",
+                    "bento-gap": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "unit": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Space Grotesk"],
+                    "display-lg": ["Space Grotesk"],
+                    "body-lg": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-md": ["JetBrains Mono"],
+                    "headline-lg": ["Space Grotesk"],
+                    "code-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center px-margin-desktop py-4 mx-auto w-full max-w-[1440px]">
+<div class="font-display-lg text-headline-md font-bold text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.5)]">
+                PSM_CORE_V1.0
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 transition-all duration-300 ease-out active:scale-95" href="#">Models</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-primary-fixed border-b-2 border-primary-fixed-dim pb-1 px-3 py-1 transition-all duration-300 ease-out active:scale-95" href="#">Architecture</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 transition-all duration-300 ease-out active:scale-95" href="#">Neural_Net</a>
+<a class="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(0,219,233,0.3)] px-3 py-1 transition-all duration-300 ease-out active:scale-95" href="#">Terminal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary-fixed-dim hover:bg-primary/10 p-2 rounded transition-all duration-300 ease-out active:scale-95">settings_input_component</button>
+<button class="material-symbols-outlined text-primary-fixed-dim hover:bg-primary/10 p-2 rounded transition-all duration-300 ease-out active:scale-95">terminal</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[280px] z-40 bg-surface-container-low/60 backdrop-blur-3xl border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.4)] flex flex-col h-full py-24 px-4 hidden lg:flex">
+<div class="mb-12">
+<h2 class="font-headline-md text-primary-fixed font-bold">P.S. MADHURI</h2>
+<p class="font-code-sm text-code-sm text-on-surface-variant opacity-70">STATUS: ENCRYPTED</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="group flex items-center gap-3 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">fingerprint</span>
+<span>Bio_Scan</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 font-code-sm text-code-sm bg-primary-container/20 text-primary-fixed-dim border-l-4 border-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">database</span>
+<span>Project_Logs</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">memory</span>
+<span>Skill_Matrix</span>
+</a>
+<a class="group flex items-center gap-3 px-4 py-3 font-code-sm text-code-sm text-on-surface-variant opacity-70 hover:bg-surface-bright/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">send</span>
+<span>Contact_Init</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary-container/10 border border-primary-fixed-dim text-primary-fixed-dim font-code-sm py-4 tracking-widest hover:bg-primary-container/20 transition-colors">
+            INITIATE_CONTACT
+        </button>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-0 lg:ml-[280px] pt-24 pb-20 px-margin-mobile md:px-margin-desktop min-h-screen scanline relative">
+<!-- Background Vector Grid -->
+<div class="fixed inset-0 pointer-events-none opacity-10" style="background-image: radial-gradient(#00dbe9 1px, transparent 1px); background-size: 32px 32px;"></div>
+<div class="max-w-[1440px] mx-auto grid grid-cols-12 gap-bento-gap relative z-10">
+<!-- Page Header -->
+<div class="col-span-12 mb-8">
+<div class="inline-flex items-center gap-2 mb-2">
+<span class="w-3 h-3 bg-secondary-fixed shadow-[0_0_10px_#c3f400]"></span>
+<span class="font-code-sm text-secondary-fixed tracking-[0.2em] uppercase">System_Architecture_Blueprint</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary-fixed-dim uppercase emissive-cyan">Core Neural Pipeline</h1>
+</div>
+<!-- Left Terminal: Anomalies -->
+<div class="col-span-12 lg:col-span-3 glass-panel bento-cell p-4 h-[600px] flex flex-col">
+<div class="flex items-center justify-between border-b border-white/10 pb-2 mb-4">
+<span class="font-code-sm text-on-surface-variant">LOG_STREAM://ANOMALIES</span>
+<span class="w-2 h-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_#ffb4ab]"></span>
+</div>
+<div class="flex-grow overflow-y-auto space-y-3 font-code-sm text-code-sm text-on-surface-variant/80">
+<div class="border-l-2 border-error/50 pl-2">
+<span class="text-error">[CRIT_0x7]</span> Packet loss detected in node 04. Data parity mismatch.
+                        <div class="text-[10px] opacity-40">TIMESTAMP: 14:22:01.04</div>
+</div>
+<div class="border-l-2 border-secondary-fixed/50 pl-2">
+<span class="text-secondary-fixed">[INFO]</span> Load balancer shifting traffic to Cluster_B.
+                        <div class="text-[10px] opacity-40">TIMESTAMP: 14:22:05.11</div>
+</div>
+<div class="border-l-2 border-primary-fixed/50 pl-2">
+<span class="text-primary-fixed">[SYNC]</span> Neural weights broadcasted to 48 edge nodes.
+                        <div class="text-[10px] opacity-40">TIMESTAMP: 14:22:09.92</div>
+</div>
+<div class="border-l-2 border-error/50 pl-2">
+<span class="text-error">[WARN]</span> Ingestion latency &gt; 40ms. Auto-scaling initiated.
+                        <div class="text-[10px] opacity-40">TIMESTAMP: 14:22:15.33</div>
+</div>
+<div class="border-l-2 border-primary-fixed/50 pl-2 opacity-50">
+<span class="text-primary-fixed">[IDLE]</span> Thread 0xAA waiting for input...
+                    </div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/10 flex gap-2">
+<div class="h-1 bg-primary-fixed-dim/20 flex-grow relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary-fixed-dim w-1/3 shadow-[0_0_10px_#00dbe9]"></div>
+</div>
+<span class="text-[10px] font-code-sm text-primary-fixed-dim">74% PKT_FLOW</span>
+</div>
+</div>
+<!-- Central Blueprint: Interactive Projection -->
+<div class="col-span-12 lg:col-span-9 glass-panel bento-cell relative min-h-[600px] overflow-hidden flex items-center justify-center">
+<!-- SVG Flow Lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 800 500">
+<defs>
+<lineargradient id="flowGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="transparent"></stop>
+<stop offset="50%" stop-color="#00dbe9"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+<!-- Path: Ingestion to Ensemble -->
+<path d="M 150 250 L 300 250" fill="none" stroke="rgba(0, 219, 233, 0.2)" stroke-width="2"></path>
+<circle fill="#00dbe9" r="3">
+<animatemotion dur="2s" path="M 150 250 L 300 250" repeatcount="indefinite"></animatemotion>
+</circle>
+<!-- Path: Ensemble to Inference (Top) -->
+<path d="M 500 250 Q 550 150 650 150" fill="none" stroke="rgba(195, 244, 0, 0.2)" stroke-width="2"></path>
+<circle fill="#c3f400" r="3">
+<animatemotion dur="1.5s" path="M 500 250 Q 550 150 650 150" repeatcount="indefinite"></animatemotion>
+</circle>
+<!-- Path: Ensemble to Inference (Bottom) -->
+<path d="M 500 250 Q 550 350 650 350" fill="none" stroke="rgba(0, 219, 233, 0.2)" stroke-width="2"></path>
+<circle fill="#00dbe9" r="3">
+<animatemotion dur="3s" path="M 500 250 Q 550 350 650 350" repeatcount="indefinite"></animatemotion>
+</circle>
+</svg>
+<div class="relative w-full h-full flex items-center justify-between px-12 lg:px-24">
+<!-- Node: Data Ingestion -->
+<div class="flex flex-col items-center group cursor-crosshair">
+<div class="w-16 h-16 rounded-full border border-primary-fixed-dim/40 flex items-center justify-center bg-primary-container/10 group-hover:shadow-[0_0_20px_rgba(0,219,233,0.4)] transition-all duration-500">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">input</span>
+</div>
+<div class="mt-4 text-center">
+<p class="font-code-sm text-primary-fixed-dim font-bold">Data Ingestion</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Multi-source Streams</p>
+</div>
+<!-- Ghost Label -->
+<div class="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity bg-surface-container-high px-3 py-1 border border-primary-fixed-dim text-[10px] font-code-sm text-primary-fixed-dim whitespace-nowrap">
+                            LATENCY: 4ms // PKTS: 2.4k/s
+                        </div>
+</div>
+<!-- Node: Ensemble Models (Central Hub) -->
+<div class="flex flex-col items-center group cursor-crosshair">
+<div class="w-24 h-24 border-2 border-secondary-fixed/40 bg-secondary-container/5 rotate-45 flex items-center justify-center group-hover:border-secondary-fixed group-hover:shadow-[0_0_30px_rgba(195,244,0,0.3)] transition-all duration-700">
+<div class="-rotate-45 flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">hub</span>
+</div>
+</div>
+<div class="mt-8 text-center">
+<p class="font-code-sm text-secondary-fixed font-bold">Ensemble Models</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Stochastic Weight Averaging</p>
+</div>
+</div>
+<!-- Inference Nodes (Right Stack) -->
+<div class="flex flex-col gap-12">
+<div class="flex flex-row-reverse items-center gap-4 group cursor-crosshair">
+<div class="w-14 h-14 bg-surface-container-highest border border-white/10 flex items-center justify-center group-hover:border-primary-fixed transition-all">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed">bolt</span>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-on-surface text-sm">Real-time Inference</p>
+<span class="px-2 py-0.5 bg-primary-fixed-dim text-on-primary text-[9px] font-bold">ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-row-reverse items-center gap-4 group cursor-crosshair opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-14 h-14 bg-surface-container-highest border border-white/10 flex items-center justify-center group-hover:border-secondary-fixed transition-all">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary-fixed">batch_prediction</span>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-on-surface text-sm">Batch Processing</p>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant text-[9px] font-bold">SLEEP</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Corner Deco Components -->
+<div class="absolute top-4 left-4 font-code-sm text-[10px] text-primary-fixed/40">
+                    SYSTEM_ORIGIN: 0x24_NODE_ALPHA
+                </div>
+<div class="absolute bottom-4 right-4 font-code-sm text-[10px] text-primary-fixed/40 flex items-center gap-2">
+<span class="w-1 h-1 bg-primary-fixed rounded-full"></span>
+                    HOLOGRAPHIC_MODE: ON
+                </div>
+</div>
+<!-- Bottom Stats Grid -->
+<div class="col-span-12 md:col-span-4 glass-panel bento-cell p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim">speed</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Pipeline Velocity</h3>
+</div>
+<div class="text-3xl font-display-lg text-primary-fixed-dim mb-2">94.2 <span class="text-sm font-code-sm opacity-50">TFLOP/s</span></div>
+<div class="w-full h-1.5 bg-white/5 relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary-fixed-dim w-[94.2%]"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 glass-panel bento-cell p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary-fixed">precision_manufacturing</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Model Accuracy</h3>
+</div>
+<div class="text-3xl font-display-lg text-secondary-fixed mb-2">99.98<span class="text-sm font-code-sm opacity-50">%</span></div>
+<p class="text-[10px] font-code-sm text-on-surface-variant/60 uppercase">Confidence Interval: 0.002σ</p>
+</div>
+<div class="col-span-12 md:col-span-4 glass-panel bento-cell p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-error">cloud_sync</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Global Latency</h3>
+</div>
+<div class="text-3xl font-display-lg text-on-surface mb-2">24 <span class="text-sm font-code-sm opacity-50 text-error">ms</span></div>
+<div class="flex gap-1 mt-2">
+<div class="w-2 h-4 bg-primary-fixed-dim"></div>
+<div class="w-2 h-6 bg-primary-fixed-dim/80"></div>
+<div class="w-2 h-3 bg-primary-fixed-dim/60"></div>
+<div class="w-2 h-8 bg-error shadow-[0_0_10px_rgba(255,180,171,0.5)]"></div>
+<div class="w-2 h-5 bg-primary-fixed-dim/40"></div>
+</div>
+</div>
+<!-- Large Visualization Card -->
+<div class="col-span-12 glass-panel bento-cell h-96 relative overflow-hidden flex flex-col p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline-md text-primary-fixed-dim mb-1">Architecture Sub-Systems</h2>
+<p class="font-code-sm text-sm text-on-surface-variant">Hierarchical view of modular components</p>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 border border-white/10 font-code-sm text-xs hover:bg-white/5 transition-colors">EXPORT_JSON</button>
+<button class="px-4 py-2 bg-primary-fixed-dim text-on-primary font-code-sm text-xs font-bold shadow-[0_0_15px_rgba(0,219,233,0.3)]">SCALE_SYSTEM</button>
+</div>
+</div>
+<div class="flex-grow grid grid-cols-4 gap-4">
+<div class="border-l-4 border-primary-fixed-dim bg-white/5 p-4 flex flex-col justify-between group hover:bg-primary-container/10 transition-colors">
+<span class="font-code-sm text-[10px] text-on-surface-variant">SUB_01</span>
+<div class="font-label-caps text-lg text-primary-fixed-dim">Load Balancer</div>
+<p class="text-[10px] text-on-surface-variant/60">Dynamic resource allocation across 12 clusters.</p>
+</div>
+<div class="border-l-4 border-secondary-fixed bg-white/5 p-4 flex flex-col justify-between group hover:bg-secondary-container/10 transition-colors">
+<span class="font-code-sm text-[10px] text-on-surface-variant">SUB_02</span>
+<div class="font-label-caps text-lg text-secondary-fixed">Feature Store</div>
+<p class="text-[10px] text-on-surface-variant/60">Low-latency key-value storage for ML features.</p>
+</div>
+<div class="border-l-4 border-primary-fixed-dim bg-white/5 p-4 flex flex-col justify-between group hover:bg-primary-container/10 transition-colors">
+<span class="font-code-sm text-[10px] text-on-surface-variant">SUB_03</span>
+<div class="font-label-caps text-lg text-primary-fixed-dim">Evaluation Suite</div>
+<p class="text-[10px] text-on-surface-variant/60">Continuous model validation and drift detection.</p>
+</div>
+<div class="border-l-4 border-on-surface-variant/20 bg-white/5 p-4 flex flex-col justify-between group hover:bg-white/10 transition-colors">
+<span class="font-code-sm text-[10px] text-on-surface-variant">SUB_04</span>
+<div class="font-label-caps text-lg text-on-surface-variant">Cold Storage</div>
+<p class="text-[10px] text-on-surface-variant/60">Long-term archiving of legacy system logs.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-6 border-t border-secondary-fixed/20 z-50 relative">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop w-full mx-auto max-w-[1440px] gap-4">
+<div class="font-code-sm text-code-sm uppercase text-on-surface-variant cursor-crosshair">
+                © 2024 CORE_STUB // PSM_OS_V1.0
+            </div>
+<div class="flex gap-8">
+<span class="font-code-sm text-code-sm uppercase text-secondary-fixed-dim hover:text-secondary-fixed transition-colors cursor-crosshair">System_Status: OK</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-crosshair">Latency: 24ms</span>
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-crosshair">Node: 0x7DF4FF</span>
+</div>
+</div>
+</footer>
+</body></html>
